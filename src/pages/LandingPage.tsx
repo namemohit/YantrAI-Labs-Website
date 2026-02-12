@@ -1,8 +1,12 @@
-import React from 'react';
 import { useApp } from '../AppContext';
 import { motion } from 'framer-motion';
-import { Monitor, Smartphone, Phone, Briefcase, Eye, BarChart3 } from 'lucide-react';
+import { Monitor, Cpu, Eye, BarChart3 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import ImageSlider from '../components/ImageSlider';
+import BentoCard from '../components/BentoCard';
+import MagneticButton from '../components/MagneticButton';
+import ExpandableJobItem from '../components/ExpandableJobItem';
+import AccessPass from '../components/AccessPass';
 
 const LandingPage: React.FC = () => {
     const { data } = useApp();
@@ -19,54 +23,48 @@ const LandingPage: React.FC = () => {
             <div id="about"></div>
 
             {/* Navigation */}
-            <nav className="sticky-nav">
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', height: '100%', overflow: 'hidden' }}>
-                        <img
-                            src="/yantra-logo.png"
-                            alt="Yantra AI Logo"
-                            style={{
-                                height: '80px', // Increased from 50px
-                                width: 'auto',
-                                display: 'block'
-                            }}
-                        />
-                    </div>
-                    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-                        <a href="#about" style={{ textDecoration: 'none', color: 'var(--jira-text)', fontWeight: 500, fontSize: '0.9rem' }}>About</a>
-                        <a href="#products" style={{ textDecoration: 'none', color: 'var(--jira-text)', fontWeight: 500, fontSize: '0.9rem' }}>Products</a>
-                        <a href="#career" style={{ textDecoration: 'none', color: 'var(--jira-text)', fontWeight: 500, fontSize: '0.9rem' }}>Career</a>
-                        <a href="#contact" style={{ textDecoration: 'none', color: 'var(--jira-text)', fontWeight: 500, fontSize: '0.9rem' }}>Contact us</a>
-                        <a href="/login" className="btn-secondary" style={{ textDecoration: 'none', padding: '0.5rem 1.25rem' }}>Login</a>
-                    </div>
-                </div>
-            </nav>
+            {/* Navigation */}
+            <Navbar />
 
             {/* Hero Section */}
-            <section style={{ background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)', padding: '8rem 0' }}>
-                <div className="container" style={{ textAlign: 'center' }}>
+            {/* Hero Section */}
+            <section style={{ background: '#000000', padding: '120px 0 60px 0', color: 'white', textAlign: 'center', minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div className="container">
                     <motion.h1
                         {...fadeIn}
-                        style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--jira-text)', marginBottom: '1.5rem', lineHeight: 1.1 }}
+                        style={{
+                            fontSize: 'clamp(3rem, 5vw, 5rem)',
+                            fontWeight: 700,
+                            marginBottom: '0.5rem',
+                            lineHeight: 1.2,
+                            letterSpacing: '-0.02em',
+                            background: 'linear-gradient(180deg, #fff 0%, #aaa 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            textWrap: 'balance',
+                            paddingBottom: '0.1em'
+                        }}
                     >
-                        Empower Your Business <br /> with <span style={{ color: 'var(--jira-blue)' }}>Yantra AI</span>
+                        Intelligence. Integrated.
                     </motion.h1>
                     <motion.p
                         {...fadeIn}
                         transition={{ delay: 0.2, duration: 0.6 }}
-                        style={{ fontSize: '1.25rem', color: 'var(--jira-text-subtle)', maxWidth: '700px', margin: '0 auto 3rem auto' }}
+                        style={{ fontSize: '1.5rem', color: '#86868b', maxWidth: '600px', margin: '1rem auto 3rem auto', fontWeight: 400 }}
                     >
-                        The next-generation hardware and software solution designed to streamline B2B operations and boost sales with integrated artificial intelligence.
+                        Custom AI hardware and software ecosystems designed to scale your enterprise operations.
                     </motion.p>
                     <motion.div
                         {...fadeIn}
                         transition={{ delay: 0.4, duration: 0.6 }}
-                        style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}
+                        style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}
                     >
-                        <a href="#contact" className="btn-primary" style={{ textDecoration: 'none', padding: '1rem 2.5rem', fontSize: '1.1rem', display: 'flex', alignItems: 'center' }}>
-                            Get Started
-                        </a>
-                        <a href="#products" className="btn-secondary" style={{ textDecoration: 'none', padding: '1rem 2.5rem', fontSize: '1.1rem' }}>View Products</a>
+                        <MagneticButton onClick={() => window.location.href = '#contact'}>
+                            Book a Demo
+                        </MagneticButton>
+                        <MagneticButton className="btn-secondary" onClick={() => window.location.href = '#products'}>
+                            View Solutions <span style={{ fontSize: '12px', marginLeft: '4px' }}>›</span>
+                        </MagneticButton>
                     </motion.div>
                 </div>
             </section>
@@ -75,130 +73,174 @@ const LandingPage: React.FC = () => {
             <ImageSlider />
 
             {/* What Yantra Does - Products Section */}
-            <section id="products" style={{ background: 'white' }}>
+            {/* What Yantra Does - Products Section (Bento Grid) */}
+            <section id="products" style={{ background: '#f5f5f7', padding: '100px 0' }}>
                 <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Building AI solutions that work!</h2>
-                        <p style={{ color: 'var(--jira-text-subtle)' }}>Everything you need to run your business efficiently.</p>
+                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>Hardware meeting Software.</h2>
+                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>A complete ecosystem for modern business.</p>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
-                        <motion.div {...fadeIn} style={{ background: 'var(--jira-subtle-bg)', padding: '2.5rem', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--jira-blue)', color: 'white', width: '50px', height: '50px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Smartphone size={28} />
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'repeat(2, minmax(300px, auto))', gap: '24px' }}>
+
+                        {/* Large Item 1: Industrial Hardware - First Row */}
+                        <BentoCard delay={0.1} style={{ gridColumn: 'span 7', padding: '40px' }}>
+                            <div style={{ zIndex: 2, position: 'relative' }}>
+                                <div style={{ color: '#86868b', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>HARDWARE</div>
+                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Industrial Grade POS</h3>
+                                <p style={{ color: '#1d1d1f', fontSize: '17px', maxWidth: '350px' }}>NFC-enabled, thermal printing, and HD touch displays built for rigour.</p>
                             </div>
-                            <h3 style={{ marginBottom: '1rem' }}>Industrial Hardware</h3>
-                            <p style={{ color: 'var(--jira-text-subtle)' }}>Durable, high-performance POS hardware with integrated NFC, thermal printers, and HD touch displays.</p>
-                        </motion.div>
-                        <motion.div {...fadeIn} transition={{ delay: 0.2 }} style={{ background: 'var(--jira-subtle-bg)', padding: '2.5rem', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--jira-blue)', color: 'white', width: '50px', height: '50px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Monitor size={28} />
+                            <div style={{ position: 'absolute', right: '-20px', bottom: '-20px', opacity: 0.1 }}>
+                                <Monitor size={300} color="#000" />
                             </div>
-                            <h3 style={{ marginBottom: '1rem' }}>AI-Powered Software</h3>
-                            <p style={{ color: 'var(--jira-text-subtle)' }}>Smart inventory management, predictive sales analytics, and automated multi-channel reconciliation.</p>
-                        </motion.div>
-                        <motion.div {...fadeIn} transition={{ delay: 0.3 }} style={{ background: 'var(--jira-subtle-bg)', padding: '2.5rem', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--jira-blue)', color: 'white', width: '50px', height: '50px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Eye size={28} />
+                        </BentoCard>
+
+                        {/* Medium Item 2: AI Software - First Row */}
+                        <BentoCard delay={0.2} lightMode={false} style={{ gridColumn: 'span 5', padding: '40px' }}>
+                            <div style={{ zIndex: 2, position: 'relative' }}>
+                                <div style={{ color: '#86868b', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SOFTWARE</div>
+                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', color: '#ffffff', letterSpacing: '-0.03em' }}>Neural Engine</h3>
+                                <p style={{ color: '#d2d2d7', fontSize: '17px' }}>Processing millions of data points locally for instant insights.</p>
                             </div>
-                            <h3 style={{ marginBottom: '1rem' }}>Vision AI</h3>
-                            <p style={{ color: 'var(--jira-text-subtle)' }}>Advanced computer vision for retail analytics, customer tracking, and automated checkout systems.</p>
-                        </motion.div>
-                        <motion.div {...fadeIn} transition={{ delay: 0.4 }} style={{ background: 'var(--jira-subtle-bg)', padding: '2.5rem', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--jira-blue)', color: 'white', width: '50px', height: '50px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <BarChart3 size={28} />
+                            <div style={{ position: 'absolute', right: '20px', bottom: '20px', opacity: 0.3 }}>
+                                <Cpu size={120} color="#0071e3" />
                             </div>
-                            <h3 style={{ marginBottom: '1rem' }}>Business Intelligence</h3>
-                            <p style={{ color: 'var(--jira-text-subtle)' }}>Real-time dashboards, actionable insights, and data-driven strategies to maximize ROI.</p>
-                        </motion.div>
+                        </BentoCard>
+
+                        {/* Medium Item 3: Vision AI - Second Row */}
+                        <BentoCard delay={0.1} style={{ gridColumn: 'span 5', padding: '40px' }}>
+                            <div style={{ zIndex: 2, position: 'relative' }}>
+                                <div style={{ color: '#0071e3', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>VISION</div>
+                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Computer Vision</h3>
+                                <p style={{ color: '#1d1d1f', fontSize: '17px' }}>Track customer behavior and optimize layout in real-time.</p>
+                            </div>
+                            <div style={{ position: 'absolute', right: '20px', bottom: '20px', opacity: 0.1 }}>
+                                <Eye size={120} color="#0071e3" />
+                            </div>
+                        </BentoCard>
+
+                        {/* Large Item 4: Business Intelligence - Second Row */}
+                        <BentoCard delay={0.2} style={{ gridColumn: 'span 7', padding: '40px' }}>
+                            <div style={{ zIndex: 2, position: 'relative' }}>
+                                <div style={{ color: '#f56300', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ANALYTICS</div>
+                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Deep Intelligence</h3>
+                                <p style={{ color: '#1d1d1f', fontSize: '17px', maxWidth: '400px' }}>Custom dashboards that translate complex datasets into actionable growth strategies.</p>
+                            </div>
+                            <div style={{ position: 'absolute', right: '-20px', bottom: '-40px', opacity: 0.1 }}>
+                                <BarChart3 size={250} color="#f56300" />
+                            </div>
+                        </BentoCard>
+
+                        {/* Full Width Item: Enterprise - Elevated with Neural Background and Sheen */}
+                        <BentoCard
+                            delay={0.3}
+                            lightMode={false}
+                            showNeuralNetwork={true}
+                            showSheen={true}
+                            style={{ gridColumn: 'span 12', padding: '60px 40px', marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+                        >
+                            <div style={{ zIndex: 2, position: 'relative', maxWidth: '500px' }}>
+                                <div style={{ color: '#0071e3', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
+                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#ffffff', letterSpacing: '-0.03em' }}>Custom Solutions</h3>
+                                <p style={{ color: '#d2d2d7', fontSize: '19px' }}>We build bespoke AI models tailored to your specific industry needs. From logistics to retail, we cover it all.</p>
+                                <div style={{ marginTop: '24px' }}>
+                                    <MagneticButton style={{ background: 'white', color: 'black' }}>Learn about Enterprise</MagneticButton>
+                                </div>
+                            </div>
+                            {/* Static icon replaced by NeuralNetworkBackground in BentoCard */}
+                        </BentoCard>
+
                     </div>
+
+                    <style>{`
+                        @media (max-width: 900px) {
+                            div[style*="grid-template-columns"] {
+                                grid-template-columns: 1fr !important;
+                                grid-template-rows: auto !important;
+                            }
+                            div[style*="grid-column: span"] {
+                                grid-column: span 1 !important;
+                            }
+                        }
+                    `}</style>
+
                 </div>
             </section>
 
-            {/* Career Section */}
-            <section id="career" style={{ background: 'var(--jira-subtle-bg)' }}>
+            {/* Career Section - Minimalist List & Expand */}
+            <section id="career" style={{ background: '#ffffff', padding: '100px 0' }}>
                 <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Join Our Team</h2>
-                        <p style={{ color: 'var(--jira-text-subtle)' }}>Help us build the future of B2B commerce.</p>
+                    <div style={{ marginBottom: '60px', maxWidth: '600px' }}>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.1, letterSpacing: '-0.025em', textWrap: 'balance' }}>Join the team.</h2>
+                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>Help us build the next generation of industrial intelligence.</p>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
                         {[
-                            { title: 'AI Engineer', type: 'Engineering', location: 'Remote / Gurugram' },
-                            { title: 'Sales Director', type: 'Sales', location: 'Gurugram' },
-                            { title: 'Growth Marketer', type: 'Marketing', location: 'Remote' },
+                            { title: 'AI Engineer', type: 'Engineering', location: 'Remote / Gurugram', description: 'Architect large-scale neural networks for industrial vision processing.' },
+                            { title: 'Sales Director', type: 'Sales', location: 'Gurugram', description: 'Drive enterprise partnerships and lead our global b2b expansion.' },
+                            { title: 'Growth Marketer', type: 'Marketing', location: 'Remote', description: 'Execute data-driven campaigns to capture international manufacturing markets.' },
                         ].map((job, index) => (
-                            <motion.div
+                            <ExpandableJobItem
                                 key={index}
-                                {...fadeIn}
-                                transition={{ delay: index * 0.1 }}
-                                style={{ background: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', gap: '1rem' }}
-                            >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--jira-blue)' }}>
-                                    <Briefcase size={20} />
-                                    <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>{job.type}</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.25rem' }}>{job.title}</h3>
-                                <p style={{ color: 'var(--jira-text-subtle)', fontSize: '0.9rem' }}>{job.location}</p>
-                                <button className="btn-secondary" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>Apply Now</button>
-                            </motion.div>
+                                index={index}
+                                title={job.title}
+                                type={job.type}
+                                location={job.location}
+                                description={job.description}
+                            />
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Metrics Section */}
-            <section style={{ background: 'var(--jira-blue)', color: 'white' }}>
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-around', textAlign: 'center', flexWrap: 'wrap', gap: '3rem' }}>
-                    <div>
-                        <h2 style={{ fontSize: '3.5rem', color: 'white', marginBottom: '0.5rem' }}>{data.customerCount}</h2>
-                        <p style={{ opacity: 0.8, fontWeight: 500, letterSpacing: '1px' }}>HAPPY CUSTOMERS</p>
-                    </div>
-                    <div>
-                        <h2 style={{ fontSize: '3.5rem', color: 'white', marginBottom: '0.5rem' }}>{data.countryCount}</h2>
-                        <p style={{ opacity: 0.8, fontWeight: 500, letterSpacing: '1px' }}>COUNTRIES REACHED</p>
-                    </div>
-                </div>
-            </section>
 
 
-            {/* Contact Section */}
-            <section id="contact" style={{ background: 'white' }}>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-                            <div style={{ background: 'var(--jira-subtle-bg)', padding: '1.5rem 2.5rem', borderRadius: '12px', display: 'flex', alignItems: 'center', gap: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                                <Phone size={24} color="var(--jira-blue)" />
-                                <div style={{ textAlign: 'left' }}>
-                                    <div style={{ fontSize: '0.75rem', color: 'var(--jira-text-subtle)', fontWeight: 600 }}>{(data.contactPerson || "Rohit Singh").toUpperCase()}</div>
-                                    <span style={{ fontSize: '1.5rem', fontWeight: 700 }}>{data.contactPhone}</span>
-                                </div>
+            {/* Contact Section - Integrated Sales Pass */}
+            <section id="contact" style={{ background: '#000000', padding: '120px 0', overflow: 'hidden', position: 'relative' }}>
+                {/* Background ambient light */}
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(0, 113, 227, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '80px', alignItems: 'center' }}>
+                        <div style={{ textAlign: 'left' }}>
+                            <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em', textWrap: 'balance', color: 'white', lineHeight: 1.05 }}>Ready to scale?</h2>
+                            <p style={{ color: '#86868b', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '40px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
+
+                            <div style={{ color: 'white', opacity: 0.6, fontSize: '14px' }}>
+                                <p style={{ fontWeight: 600, marginBottom: '8px' }}>Yantra Labs Operating India HQ</p>
+                                <p>{data.address}</p>
                             </div>
-                            <button className="btn-primary" style={{ padding: '1.5rem 3rem', fontSize: '1.25rem' }}>Contact Sales</button>
                         </div>
-                        <div style={{ maxWidth: '600px', color: 'var(--jira-text-subtle)', fontSize: '1rem' }}>
-                            <p><strong>{data.companyName}</strong></p>
-                            <p>{data.address}</p>
+
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <AccessPass
+                                name={data.contactPerson || "Rohit Singh"}
+                                role="Sales Director"
+                                phone={data.contactPhone}
+                                email="hello@onegodown.com"
+                                image="/rohit-singh.png"
+                            />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <footer style={{ padding: '4rem 0', borderTop: '1px solid var(--jira-border)' }}>
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', height: '60px' }}>
-                        <img
-                            src="/yantra-logo.png"
-                            alt="Yantra AI Logo"
-                            style={{
-                                height: '50px',
-                                width: 'auto'
-                            }}
-                        />
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                        <p style={{ color: 'var(--jira-text)', fontWeight: 600, marginBottom: '0.25rem' }}>{data.companyName}</p>
-                        <p style={{ color: 'var(--jira-text-subtle)', fontSize: '0.75rem', maxWidth: '300px' }}>{data.address}</p>
-                        <p style={{ color: 'var(--jira-text-subtle)', fontSize: '0.875rem', marginTop: '1rem' }}>© 2026 {data.companyName}. All rights reserved.</p>
+            <footer style={{ background: '#f5f5f7', padding: '40px 0', borderTop: '1px solid #d2d2d7', fontSize: '12px', color: '#86868b' }}>
+                <div className="container">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
+                        <div>
+                            <p>Copyright © 2026 {data.companyName}. All rights reserved.</p>
+                            <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
+                                <a href="#" style={{ color: '#515154' }}>Privacy Policy</a>
+                                <a href="#" style={{ color: '#515154' }}>Terms of Use</a>
+                                <a href="#" style={{ color: '#515154' }}>Sales and Refunds</a>
+                                <a href="#" style={{ color: '#515154' }}>Legal</a>
+                                <a href="#" style={{ color: '#515154' }}>Site Map</a>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                            <span>India</span>
+                        </div>
                     </div>
                 </div>
             </footer>

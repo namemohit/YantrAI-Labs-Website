@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--jira-subtle-bg)'
+            background: 'var(--apple-light-gray)'
         }}>
             <button
                 onClick={() => navigate('/')}
@@ -40,71 +40,86 @@ const LoginPage: React.FC = () => {
                     gap: '0.5rem',
                     cursor: 'pointer',
                     fontSize: '1rem',
-                    color: 'var(--jira-text-subtle)'
+                    color: 'var(--apple-black)',
+                    opacity: 0.7
                 }}
             >
                 <ArrowLeft size={20} /> Back to Home
             </button>
             <div style={{
                 background: 'white',
-                padding: '3rem',
-                borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                padding: '40px',
+                borderRadius: '24px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
                 width: '100%',
                 maxWidth: '400px'
             }}>
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <img src="/yantra-logo.png" alt="Logo" style={{ height: '60px', marginBottom: '1rem' }} />
-                    <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>Admin Login</h1>
-                    <p style={{ color: 'var(--jira-text-subtle)' }}>Enter your credentials to access the admin panel.</p>
+                <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                    <img src="/yantra-logo.png" alt="Logo" style={{ height: '80px', marginBottom: '20px' }} />
+                    <h1 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '10px' }}>Sign in to YantraAI</h1>
+                    <p style={{ color: '#86868b', fontSize: '15px' }}>Enter your credentials to access the ecosystem.</p>
                 </div>
 
-                <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>Username</label>
-                        <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '0.75rem',
-                                border: '1px solid var(--jira-border)',
-                                borderRadius: '6px',
-                                fontSize: '1rem'
-                            }}
-                            placeholder="Enter username"
-                        />
+                        <div style={{ position: 'relative' }}>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                style={{
+                                    width: '100%',
+                                    padding: '16px 16px',
+                                    border: '1px solid #d2d2d7',
+                                    borderRadius: '12px',
+                                    fontSize: '17px',
+                                    background: 'rgba(0,0,0,0.02)',
+                                    transition: 'all 0.2s'
+                                }}
+                                placeholder="Username"
+                                onFocus={(e) => e.target.style.borderColor = '#0071e3'}
+                                onBlur={(e) => e.target.style.borderColor = '#d2d2d7'}
+                            />
+                        </div>
                     </div>
                     <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>Password</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '0.75rem',
-                                border: '1px solid var(--jira-border)',
-                                borderRadius: '6px',
-                                fontSize: '1rem'
-                            }}
-                            placeholder="Enter password"
-                        />
+                        <div style={{ position: 'relative' }}>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                style={{
+                                    width: '100%',
+                                    padding: '16px 16px',
+                                    border: '1px solid #d2d2d7',
+                                    borderRadius: '12px',
+                                    fontSize: '17px',
+                                    background: 'rgba(0,0,0,0.02)',
+                                    transition: 'all 0.2s'
+                                }}
+                                placeholder="Password"
+                                onFocus={(e) => e.target.style.borderColor = '#0071e3'}
+                                onBlur={(e) => e.target.style.borderColor = '#d2d2d7'}
+                            />
+                        </div>
                     </div>
-                    {error && <div style={{ color: 'red', fontSize: '0.875rem', textAlign: 'center' }}>{error}</div>}
+                    {error && <div style={{ color: '#ff3b30', fontSize: '13px', textAlign: 'center' }}>{error}</div>}
                     <button
                         type="submit"
                         className="btn-primary"
                         style={{
                             width: '100%',
-                            padding: '0.875rem',
-                            fontSize: '1rem',
-                            marginTop: '0.5rem'
+                            padding: '14px',
+                            fontSize: '17px',
+                            marginTop: '10px',
+                            borderRadius: '12px'
                         }}
                     >
-                        Login
+                        Sign In
                     </button>
+                    <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                        <a href="#" style={{ color: '#0071e3', fontSize: '13px' }}>Forgot password?</a>
+                    </div>
                 </form>
             </div>
         </div>
