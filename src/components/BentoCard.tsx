@@ -75,7 +75,9 @@ const BentoCard: React.FC<BentoCardProps> = ({
     delay = 0,
     lightMode = true,
     showNeuralNetwork = false,
-    showSheen = false
+    showSheen = false,
+    onMouseMove,
+    onMouseLeave
 }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const mouseX = useMotionValue(0);
