@@ -7,6 +7,7 @@ import BentoCard from '../components/BentoCard';
 import MagneticButton from '../components/MagneticButton';
 import ExpandableJobItem from '../components/ExpandableJobItem';
 import AccessPass from '../components/AccessPass';
+import ycsLogoOfficial from '../assets/ycs-logo-official.png';
 
 const LandingPage: React.FC = () => {
     const { data } = useApp();
@@ -52,7 +53,7 @@ const LandingPage: React.FC = () => {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         style={{ fontSize: '1.5rem', color: '#86868b', maxWidth: '600px', margin: '1rem auto 3rem auto', fontWeight: 400 }}
                     >
-                        Custom AI hardware and software ecosystems designed to scale your enterprise operations.
+                        We combine AI, ML, and intelligent hardware to solve real-world business problems.
                     </motion.p>
                     <motion.div
                         {...fadeIn}
@@ -77,11 +78,130 @@ const LandingPage: React.FC = () => {
             <section id="products" style={{ background: '#f5f5f7', padding: '100px 0' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>Hardware meeting Software.</h2>
-                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>A complete ecosystem for modern business.</p>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>AI. ML. Intelligent Hardware.</h2>
+                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>Building foundation of modern business.</p>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'repeat(2, minmax(300px, auto))', gap: '24px' }}>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'auto', gap: '24px' }}>
+
+                        {/* Top Item: YCS Consultancy Services */}
+                        <BentoCard
+                            delay={0.1}
+                            lightMode={false}
+                            style={{
+                                gridColumn: 'span 12',
+                                padding: '60px',
+                                marginBottom: '24px',
+                                display: 'block',
+                                background: '#000000',
+                                minHeight: '450px',
+                                overflow: 'hidden',
+                                position: 'relative',
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }}
+                        >
+                            {/* Dynamic Liquid Background */}
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                    x: [0, 50, 0],
+                                    y: [0, -30, 0],
+                                }}
+                                transition={{
+                                    duration: 20,
+                                    repeat: Infinity,
+                                    ease: "linear"
+                                }}
+                                style={{
+                                    position: 'absolute',
+                                    top: '-20%',
+                                    left: '-10%',
+                                    width: '140%',
+                                    height: '140%',
+                                    background: 'radial-gradient(circle at 70% 30%, rgba(0, 113, 227, 0.15) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(0, 113, 227, 0.1) 0%, transparent 50%)',
+                                    zIndex: 0,
+                                    filter: 'blur(80px)'
+                                }}
+                            />
+
+                            {/* Content Side with Flex Layout for Centered Right Logo */}
+                            <div style={{
+                                zIndex: 10,
+                                position: 'relative',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: '40px'
+                            }}>
+                                <div style={{ maxWidth: '550px' }}>
+                                    <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '20px', color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
+                                        Master the <br />
+                                        <span style={{
+                                            background: 'linear-gradient(90deg, #0071e3 0%, #ffffff 100%)',
+                                            WebkitBackgroundClip: 'text',
+                                            WebkitTextFillColor: 'transparent',
+                                            display: 'inline-block'
+                                        }}>
+                                            AI Frontier
+                                        </span> with YCS.
+                                    </h3>
+
+                                    <p style={{ color: '#d2d2d7', fontSize: '20px', lineHeight: 1.5, marginBottom: '32px', fontWeight: 400 }}>
+                                        Deep technical mastery for enterprises deploying high-impact intelligence across global infrastructure.
+                                    </p>
+
+                                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                                        <MagneticButton
+                                            style={{
+                                                background: '#ffffff',
+                                                color: '#000000',
+                                                padding: '14px 32px',
+                                                borderRadius: '999px',
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                boxShadow: '0 4px 14px 0 rgba(255,255,255,0.1)'
+                                            }}
+                                            onClick={() => window.open('/ycs', '_blank')}
+                                        >
+                                            Explore YCS Solutions
+                                        </MagneticButton>
+                                        <MagneticButton
+                                            style={{
+                                                background: 'rgba(255,255,255,0.03)',
+                                                border: '1px solid rgba(255,255,255,0.2)',
+                                                color: '#ffffff',
+                                                padding: '14px 32px',
+                                                borderRadius: '999px',
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                backdropFilter: 'blur(10px)'
+                                            }}
+                                            onClick={() => window.open('/case-study', '_blank')}
+                                        >
+                                            View Case Study
+                                        </MagneticButton>
+                                    </div>
+                                </div>
+
+                                {/* Official Logo Integrated into Flex Flow */}
+                                <div style={{
+                                    flexShrink: 0,
+                                    marginRight: '20px'
+                                }}>
+                                    <img
+                                        src={ycsLogoOfficial}
+                                        alt="YCS Official Logo"
+                                        style={{
+                                            width: '280px',
+                                            height: 'auto',
+                                            display: 'block',
+                                            filter: 'invert(1) hue-rotate(180deg) brightness(1.2)'
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        </BentoCard>
 
                         {/* Large Item 1: Industrial Hardware - First Row */}
                         <BentoCard delay={0.1} style={{ gridColumn: 'span 7', padding: '40px' }}>
@@ -144,7 +264,12 @@ const LandingPage: React.FC = () => {
                                 <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#ffffff', letterSpacing: '-0.03em' }}>Custom Solutions</h3>
                                 <p style={{ color: '#d2d2d7', fontSize: '19px' }}>We build bespoke AI models tailored to your specific industry needs. From logistics to retail, we cover it all.</p>
                                 <div style={{ marginTop: '24px' }}>
-                                    <MagneticButton style={{ background: 'white', color: 'black' }}>Learn about Enterprise</MagneticButton>
+                                    <MagneticButton
+                                        style={{ background: 'white', color: 'black' }}
+                                        onClick={() => window.location.href = '/enterprise'}
+                                    >
+                                        Learn about Enterprise
+                                    </MagneticButton>
                                 </div>
                             </div>
                             {/* Static icon replaced by NeuralNetworkBackground in BentoCard */}
@@ -217,7 +342,7 @@ const LandingPage: React.FC = () => {
                                 name={data.contactPerson || "Rohit Singh"}
                                 role="Sales Director"
                                 phone={data.contactPhone}
-                                email="hello@onegodown.com"
+                                email="hello@yantrailabs.com"
                                 image="/rohit-singh.png"
                             />
                         </div>

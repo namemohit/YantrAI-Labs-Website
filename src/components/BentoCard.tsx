@@ -9,6 +9,8 @@ interface BentoCardProps {
     lightMode?: boolean;
     showNeuralNetwork?: boolean;
     showSheen?: boolean;
+    onMouseMove?: (e: React.MouseEvent<HTMLDivElement>) => void;
+    onMouseLeave?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const NeuralNetworkBackground = () => (
@@ -88,6 +90,11 @@ const BentoCard: React.FC<BentoCardProps> = ({
         const { left, top } = cardRef.current.getBoundingClientRect();
         mouseX.set(e.clientX - left);
         mouseY.set(e.clientY - top);
+        if (onMouseMove) onMouseMove(e);
+    };
+
+    const handleMouseLeaveInner = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (onMouseLeave) onMouseLeave(e);
     };
 
     const baseBackground = lightMode
@@ -116,18 +123,19 @@ const BentoCard: React.FC<BentoCardProps> = ({
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
             onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeaveInner}
             style={{
                 ...style,
                 position: 'relative',
-                background: baseBackground,
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderRadius: '24px',
-                border: `1px solid ${borderColor}`,
+                background: style?.background || baseBackground,
+                backdropFilter: style?.backdropFilter || 'blur(20px)',
+                WebkitBackdropFilter: style?.backdropFilter || 'blur(20px)',
+                borderRadius: style?.borderRadius || '24px',
+                border: style?.border || `1px solid ${borderColor}`,
                 overflow: 'hidden',
-                boxShadow: lightMode
+                boxShadow: style?.boxShadow || (lightMode
                     ? '0 8px 32px -4px rgba(0, 0, 0, 0.08)'
-                    : '0 20px 40px rgba(0, 0, 0, 0.6)',
+                    : '0 20px 40px rgba(0, 0, 0, 0.6)'),
             }}
             className={className}
         >

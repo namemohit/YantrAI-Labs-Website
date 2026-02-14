@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    theme?: 'light' | 'dark';
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
+    const isDarkTheme = theme === 'dark';
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
@@ -16,10 +21,10 @@ const Navbar: React.FC = () => {
     }, []);
 
     const b2bLinks = [
-        { name: 'About Us', href: '#about' },
-        { name: 'Products & Services', href: '#products' },
-        { name: 'Careers', href: '#career' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'About Us', href: '/#about' },
+        { name: 'Products & Services', href: '/#products' },
+        { name: 'Careers', href: '/#career' },
+        { name: 'Contact', href: '/#contact' },
     ];
 
     return (
@@ -49,11 +54,11 @@ const Navbar: React.FC = () => {
                     left: '20px',
                     right: '20px',
                     bottom: '10px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: scrolled ? (isDarkTheme ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)') : 'transparent',
                     backdropFilter: 'saturate(180%) blur(20px)',
                     WebkitBackdropFilter: 'saturate(180%) blur(20px)',
                     borderRadius: '20px',
-                    border: '1px solid rgba(0,0,0,0.05)',
+                    border: scrolled ? (isDarkTheme ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)') : 'none',
                     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.05)',
                     zIndex: -1
                 }}
@@ -62,7 +67,7 @@ const Navbar: React.FC = () => {
             {/* Brand Island */}
             <div style={{ flex: '1 1 0', display: 'flex', alignItems: 'center' }}>
                 <a href="/" style={{
-                    color: 'var(--apple-black)',
+                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
                     opacity: 0.9,
                     transition: 'transform 0.3s ease',
                     display: 'flex',
@@ -78,9 +83,11 @@ const Navbar: React.FC = () => {
             <div className="desktop-menu" style={{
                 flex: '0 0 auto',
                 padding: '4px',
-                backgroundColor: scrolled ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.5)',
+                backgroundColor: scrolled
+                    ? (isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.03)')
+                    : (isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.5)'),
                 borderRadius: '999px',
-                border: '1px solid rgba(0,0,0,0.05)',
+                border: isDarkTheme ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)',
                 backdropFilter: 'blur(10px)',
                 display: 'flex',
                 alignItems: 'center',
@@ -97,7 +104,7 @@ const Navbar: React.FC = () => {
                             padding: '10px 20px',
                             fontSize: '13px',
                             fontWeight: 500,
-                            color: 'var(--apple-black)',
+                            color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
                             textDecoration: 'none',
                             borderRadius: '999px',
                             position: 'relative',
@@ -134,7 +141,7 @@ const Navbar: React.FC = () => {
             }}>
                 <a href="/login" style={{
                     fontSize: '13px',
-                    color: 'var(--apple-black)',
+                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
                     fontWeight: 500,
                     opacity: 0.7,
                     transition: 'opacity 0.2s'
@@ -147,8 +154,8 @@ const Navbar: React.FC = () => {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 style={{
                     display: 'none',
-                    background: 'rgba(255,255,255,0.8)',
-                    border: '1px solid rgba(0,0,0,0.1)',
+                    background: isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.8)',
+                    border: isDarkTheme ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)',
                     borderRadius: '50%',
                     width: '40px',
                     height: '40px',
@@ -173,11 +180,11 @@ const Navbar: React.FC = () => {
                             top: '90px',
                             left: '20px',
                             right: '20px',
-                            background: 'white',
+                            background: isDarkTheme ? '#1c1c1e' : 'white',
                             borderRadius: '24px',
                             padding: '24px',
-                            boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-                            border: '1px solid rgba(0,0,0,0.05)',
+                            boxShadow: isDarkTheme ? '0 10px 40px rgba(0,0,0,0.5)' : '0 10px 40px rgba(0,0,0,0.1)',
+                            border: isDarkTheme ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '12px'
@@ -190,7 +197,7 @@ const Navbar: React.FC = () => {
                                 style={{
                                     padding: '12px',
                                     fontSize: '17px',
-                                    color: 'var(--apple-black)',
+                                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
                                     fontWeight: 500,
                                     textDecoration: 'none',
                                     borderBottom: '1px solid #f5f5f7'
@@ -201,7 +208,7 @@ const Navbar: React.FC = () => {
                             </a>
                         ))}
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
-                            <a href="/login" style={{ textAlign: 'center', padding: '12px', color: 'var(--apple-black)', fontWeight: 500 }}>Login</a>
+                            <a href="/login" style={{ textAlign: 'center', padding: '12px', color: isDarkTheme ? '#ffffff' : 'var(--apple-black)', fontWeight: 500 }}>Login</a>
                         </div>
                     </motion.div>
                 )}
@@ -217,7 +224,7 @@ const Navbar: React.FC = () => {
                     }
                 }
             `}</style>
-        </nav>
+        </nav >
     );
 };
 
