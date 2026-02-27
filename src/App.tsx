@@ -7,6 +7,9 @@ import YCSPage from './pages/YCSPage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import EnterpriseSolutions from './pages/EnterpriseSolutions';
 
+import DeliveredProjects from './pages/DeliveredProjects';
+import LifeAtYantrAI from './pages/LifeAtYantrAI';
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -17,6 +20,8 @@ const App: React.FC = () => {
           <Route path="/ycs" element={<YCSPage />} />
           <Route path="/case-study" element={<CaseStudyPage />} />
           <Route path="/enterprise" element={<EnterpriseSolutions />} />
+          <Route path="/delivered-projects" element={<DeliveredProjects />} />
+          <Route path="/life" element={<LifeAtYantrAI />} />
         </Routes>
         <AdminPanel />
       </div>

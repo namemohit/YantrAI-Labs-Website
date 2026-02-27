@@ -21,9 +21,28 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
     }, []);
 
     const b2bLinks = [
-        { name: 'About Us', href: '/#about' },
-        { name: 'Products & Services', href: '/#products' },
-        { name: 'Careers', href: '/#career' },
+        { name: 'Know YantrAI', href: '/#about' },
+        {
+            name: 'Products & Services',
+            href: '/#products',
+            dropdown: [
+                { name: 'YCS - YantrAI Consultancy Services', href: '/ycs' },
+                { name: 'Solvr. - Mobile apps delivered in 10 mins', href: '/solvr' },
+                { name: 'Kiran - AI POS (Point of Sale)', href: '/case-study' },
+                { name: 'One Godown - AI based Supply Chain Solutions', href: '/one-godown' }
+            ]
+        },
+        { name: 'Delivered Projects', href: '/delivered-projects' },
+        {
+            name: 'Founders & Team',
+            href: '/#team',
+            dropdown: [
+                { name: 'Founders', href: '/#team' },
+                { name: 'Team blogs', href: '/blogs' },
+                { name: 'Life at YantrAI', href: '/life' }
+            ]
+        },
+        { name: 'We are hiring!', href: '/#career' },
         { name: 'Contact', href: '/#contact' },
     ];
 
@@ -95,39 +114,100 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                 position: 'relative'
             }}>
                 {b2bLinks.map((link) => (
-                    <motion.a
+                    <div
                         key={link.name}
-                        href={link.href}
+                        style={{ position: 'relative' }}
                         onMouseEnter={() => setHoveredLink(link.name)}
                         onMouseLeave={() => setHoveredLink(null)}
-                        style={{
-                            padding: '10px 20px',
-                            fontSize: '13px',
-                            fontWeight: 500,
-                            color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
-                            textDecoration: 'none',
-                            borderRadius: '999px',
-                            position: 'relative',
-                            transition: 'color 0.3s ease',
-                            zIndex: 1
-                        }}
                     >
-                        {hoveredLink === link.name && (
-                            <motion.div
-                                layoutId="nav-bg"
-                                style={{
-                                    position: 'absolute',
-                                    inset: 0,
-                                    backgroundColor: 'white',
-                                    borderRadius: '999px',
-                                    boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-                                    zIndex: -1
-                                }}
-                                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                        {link.name}
-                    </motion.a>
+                        <a
+                            href={link.href}
+                            style={{
+                                padding: '10px 20px',
+                                fontSize: '13px',
+                                fontWeight: 500,
+                                color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                                textDecoration: 'none',
+                                borderRadius: '999px',
+                                position: 'relative',
+                                display: 'block',
+                                transition: 'color 0.3s ease',
+                                zIndex: 1
+                            }}
+                        >
+                            {hoveredLink === link.name && (
+                                <motion.div
+                                    layoutId="nav-bg"
+                                    style={{
+                                        position: 'absolute',
+                                        inset: 0,
+                                        backgroundColor: isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+                                        borderRadius: '999px',
+                                        zIndex: -1
+                                    }}
+                                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            {link.name}
+                        </a>
+
+                        <AnimatePresence>
+                            {hoveredLink === link.name && link.dropdown && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    transition={{ duration: 0.2 }}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '100%',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        paddingTop: '16px', // Gap between nav item and dropdown
+                                        zIndex: 1000
+                                    }}
+                                >
+                                    <div style={{
+                                        background: isDarkTheme ? 'rgba(30,30,30,0.9)' : 'rgba(255,255,255,0.95)',
+                                        backdropFilter: 'blur(20px)',
+                                        WebkitBackdropFilter: 'blur(20px)',
+                                        borderRadius: '16px',
+                                        padding: '12px',
+                                        minWidth: '280px',
+                                        border: isDarkTheme ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.05)',
+                                        boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '4px'
+                                    }}>
+                                        {link.dropdown.map((dropItem) => (
+                                            <a
+                                                key={dropItem.name}
+                                                href={dropItem.href}
+                                                style={{
+                                                    padding: '10px 16px',
+                                                    fontSize: '13px',
+                                                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                                                    textDecoration: 'none',
+                                                    borderRadius: '8px',
+                                                    transition: 'all 0.2s',
+                                                    fontWeight: 500
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.backgroundColor = isDarkTheme ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.backgroundColor = 'transparent';
+                                                }}
+                                            >
+                                                {dropItem.name}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 ))}
             </div>
 
