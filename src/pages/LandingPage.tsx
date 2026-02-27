@@ -1,6 +1,6 @@
 import { useApp } from '../AppContext';
 import { motion } from 'framer-motion';
-import { Monitor, BarChart3 } from 'lucide-react';
+import { Monitor, BarChart3, MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import BentoCard from '../components/BentoCard';
 import MagneticButton from '../components/MagneticButton';
@@ -22,27 +22,43 @@ const LandingPage: React.FC = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section style={{ height: '85vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '100px 0', background: 'linear-gradient(90deg, #dcf8fa 0%, #e2e0ff 50%, #ffeaf7 100%)' }}>
-                <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '60px' }}>
+            <section style={{ height: '90vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '80px 0', background: 'linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f9f0ff 100%)' }}>
+                <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '80px' }}>
 
                         {/* Left Content */}
-                        <div style={{ flex: 1 }}>
+                        <div style={{ flex: 1, minWidth: '500px' }}>
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8 }}
                                 style={{
-                                    fontSize: '80px',
-                                    fontWeight: 700,
-                                    lineHeight: 1.05,
-                                    letterSpacing: '-0.03em',
-                                    marginBottom: '30px',
-                                    color: '#0a1a3a'
+                                    fontSize: '46px',
+                                    fontWeight: 800,
+                                    lineHeight: 1.1,
+                                    letterSpacing: '-0.04em',
+                                    marginBottom: '16px',
+                                    color: '#0071e3'
                                 }}
                             >
                                 Turn images into AI to get useful insights with no code
                             </motion.h1>
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                style={{
+                                    fontSize: '12px',
+                                    color: '#424245',
+                                    lineHeight: 1.6,
+                                    marginBottom: '32px',
+                                    maxWidth: '400px',
+                                    fontWeight: 400
+                                }}
+                            >
+                                Real-time AI insights for industrial intelligence. <br />
+                                Turn your vision into actionable data.
+                            </motion.p>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -78,17 +94,17 @@ const LandingPage: React.FC = () => {
                         </div>
 
                         {/* Right Content - Video */}
-                        <div style={{ flex: 1.2, position: 'relative' }}>
+                        <div style={{ flex: 1.26, position: 'relative' }}>
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.2 }}
                                 style={{
-                                    borderRadius: '24px',
+                                    borderRadius: '32px',
                                     overflow: 'hidden',
-                                    boxShadow: '0 40px 100px -20px rgba(0,0,0,0.3)',
+                                    boxShadow: '0 50px 100px -20px rgba(0,0,0,0.25)',
                                     position: 'relative',
-                                    border: '1px solid rgba(255,255,255,0.3)',
+                                    border: '1px solid rgba(255,255,255,0.4)',
                                     background: '#000'
                                 }}
                             >
@@ -101,7 +117,7 @@ const LandingPage: React.FC = () => {
                                         width: '100%',
                                         height: 'auto',
                                         display: 'block',
-                                        aspectRatio: '16/10',
+                                        aspectRatio: '16/9',
                                         objectFit: 'cover'
                                     }}
                                 >
@@ -132,6 +148,50 @@ const LandingPage: React.FC = () => {
                         <p style={{ color: '#86868b', fontSize: '1.25rem' }}>Building foundation of modern business.</p>
                     </div>
 
+                    {/* New Core Technology Video Section - Hidden until actual video is provided
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        style={{
+                            width: '100%',
+                            maxWidth: '1200px',
+                            margin: '0 auto 80px auto',
+                            borderRadius: '24px',
+                            overflow: 'hidden',
+                            boxShadow: '0 40px 100px -20px rgba(0,0,0,0.15)',
+                            backgroundColor: '#000',
+                            border: '1px solid rgba(0,0,0,0.05)',
+                            position: 'relative'
+                        }}
+                    >
+                        <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover'
+                                }}
+                            >
+                                <source src="/assets/ultralytics_hero.mp4" type="video/mp4" />
+                            </video>
+                            <div style={{
+                                position: 'absolute',
+                                inset: 0,
+                                background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4) 100%)',
+                                pointerEvents: 'none'
+                            }} />
+                        </div>
+                    </motion.div>
+                    */}
+
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'auto', gap: '24px' }}>
 
@@ -161,19 +221,7 @@ const LandingPage: React.FC = () => {
                                 <p style={{ color: '#d2d2d7', fontSize: '20px', lineHeight: 1.5, marginBottom: '32px', fontWeight: 400 }}>
                                     Stop writing boilerplate code. Use Solvr to generate production-ready React Native and Next.js applications instantly.
                                 </p>
-                                <MagneticButton
-                                    style={{
-                                        background: '#ffffff',
-                                        color: '#000000',
-                                        padding: '14px 32px',
-                                        borderRadius: '999px',
-                                        fontSize: '16px',
-                                        fontWeight: 600
-                                    }}
-                                    onClick={() => window.open('/solvr', '_blank')}
-                                >
-                                    Explore Solvr
-                                </MagneticButton>
+                                {/* Solvr exploration link removed */}
                             </div>
                         </BentoCard>
 
@@ -230,7 +278,7 @@ const LandingPage: React.FC = () => {
                             letterSpacing: '-0.04em',
                             lineHeight: 1.1
                         }}>
-                            The Pedigree behind YantrAI.
+                            The Team powering YantrAI.
                         </h2>
                         <p style={{
                             color: '#4B5563',
@@ -434,7 +482,12 @@ const LandingPage: React.FC = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '80px', alignItems: 'center' }}>
                         <div style={{ textAlign: 'left' }}>
                             <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em', textWrap: 'balance', color: 'white', lineHeight: 1.05 }}>Ready to scale?</h2>
-                            <p style={{ color: '#86868b', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '40px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
+                            <p style={{ color: '#86868b', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '32px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
+
+                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: '#86868b', maxWidth: '400px', fontSize: '1.1rem', lineHeight: 1.5 }}>
+                                <MapPin size={24} style={{ color: '#0071e3', flexShrink: 0, marginTop: '4px' }} />
+                                <span>3rd Floor Tower A, SAS tower, Unit 309, near Medanta hospital, Medicity, Sector 38, Gurugram, Haryana 122001</span>
+                            </div>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'center' }}>

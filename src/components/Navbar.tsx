@@ -27,9 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
             href: '/#products',
             dropdown: [
                 { name: 'YCS - YantrAI Consultancy Services', href: '/ycs' },
-                { name: 'Solvr. - Mobile apps delivered in 10 mins', href: '/solvr' },
-                { name: 'Kiran - AI POS (Point of Sale)', href: '/case-study' },
-                { name: 'One Godown - AI based Supply Chain Solutions', href: '/one-godown' }
+                { name: 'Kiran - AI POS (Point of Sale)', href: '/case-study' }
             ]
         },
         { name: 'Delivered Projects', href: '/delivered-projects' },
@@ -38,7 +36,6 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
             href: '/#team',
             dropdown: [
                 { name: 'Founders', href: '/#team' },
-                { name: 'Team blogs', href: '/blogs' },
                 { name: 'Life at YantrAI', href: '/life' }
             ]
         },
