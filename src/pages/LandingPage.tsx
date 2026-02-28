@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Monitor, BarChart3, MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import BentoCard from '../components/BentoCard';
-import MagneticButton from '../components/MagneticButton';
 import ExpandableJobItem from '../components/ExpandableJobItem';
 import AccessPass from '../components/AccessPass';
 import Footer from '../components/Footer';
