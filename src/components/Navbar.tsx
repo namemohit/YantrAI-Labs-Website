@@ -30,17 +30,14 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                 { name: 'Kiran - AI POS (Point of Sale)', href: '/case-study' }
             ]
         },
-        { name: 'Delivered Projects', href: '/delivered-projects' },
+
         {
-            name: 'Founders & Team',
-            href: '/#team',
-            dropdown: [
-                { name: 'Founders', href: '/#team' },
-                { name: 'Life at YantrAI', href: '/life' }
-            ]
+            name: 'Team',
+            href: '/#team'
         },
         { name: 'We are hiring!', href: '/#career' },
         { name: 'Contact', href: '/#contact' },
+        { name: 'Life at YantrAI', href: '/#life' },
     ];
 
     return (
@@ -83,7 +80,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
             {/* Brand Island */}
             <div style={{ flex: '1 1 0', display: 'flex', alignItems: 'center' }}>
                 <a href="/" style={{
-                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                    color: isDarkTheme ? '#ffffff' : 'var(--text-primary)',
                     opacity: 0.9,
                     transition: 'transform 0.3s ease',
                     display: 'flex',
@@ -91,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                     transform: scrolled ? 'scale(0.85)' : 'scale(1)',
                     transformOrigin: 'left center'
                 }}>
-                    <img src="/yantra-logo.png" alt="YantraAI" style={{ height: '80px', width: 'auto', maxWidth: 'none' }} />
+                    <img src="/assets/branding/yantrai_logo_main.png" alt="YantrAI" style={{ height: '64px', width: 'auto', maxWidth: 'none' }} />
                 </a>
             </div>
 
@@ -123,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                                 padding: '10px 20px',
                                 fontSize: '13px',
                                 fontWeight: 500,
-                                color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                                color: isDarkTheme ? '#ffffff' : 'var(--text-primary)',
                                 textDecoration: 'none',
                                 borderRadius: '999px',
                                 position: 'relative',
@@ -184,7 +181,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                                                 style={{
                                                     padding: '10px 16px',
                                                     fontSize: '13px',
-                                                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                                                    color: isDarkTheme ? '#ffffff' : 'var(--text-primary)',
                                                     textDecoration: 'none',
                                                     borderRadius: '8px',
                                                     transition: 'all 0.2s',
@@ -218,7 +215,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
             }}>
                 <a href="/login" style={{
                     fontSize: '13px',
-                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
+                    color: isDarkTheme ? '#ffffff' : 'var(--text-primary)',
                     fontWeight: 500,
                     opacity: 0.7,
                     transition: 'opacity 0.2s'
@@ -242,7 +239,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                     zIndex: 10000
                 }}
             >
-                {mobileMenuOpen ? <X size={20} color="var(--apple-black)" /> : <Menu size={20} color="var(--apple-black)" />}
+                {mobileMenuOpen ? <X size={20} color="var(--text-primary)" /> : <Menu size={20} color="var(--text-primary)" />}
             </button>
 
             {/* Mobile Menu Overlay */}

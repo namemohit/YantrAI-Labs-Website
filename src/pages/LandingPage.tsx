@@ -2,6 +2,7 @@ import { useApp } from '../AppContext';
 import { motion } from 'framer-motion';
 import { Monitor, BarChart3, MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import LifeAtYantrAISection from '../components/LifeAtYantrAISection';
 import BentoCard from '../components/BentoCard';
 import ExpandableJobItem from '../components/ExpandableJobItem';
 import AccessPass from '../components/AccessPass';
@@ -21,12 +22,12 @@ const LandingPage: React.FC = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section style={{ height: '90vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '80px 0', background: 'linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f9f0ff 100%)' }}>
+            <section style={{ height: '72vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '80px 0', background: 'var(--bg-hero-gradient)' }}>
                 <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '80px' }}>
 
                         {/* Left Content */}
-                        <div style={{ flex: 1, minWidth: '500px' }}>
+                        <div style={{ flex: 1, minWidth: '500px', marginLeft: '80px' }}>
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -37,10 +38,10 @@ const LandingPage: React.FC = () => {
                                     lineHeight: 1.1,
                                     letterSpacing: '-0.04em',
                                     marginBottom: '16px',
-                                    color: '#0071e3'
+                                    color: 'var(--yantrai-blue)'
                                 }}
                             >
-                                Turn images into AI to get useful insights with no code
+                                Turn images into AI to get useful insights.
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
@@ -48,7 +49,7 @@ const LandingPage: React.FC = () => {
                                 transition={{ duration: 0.8, delay: 0.2 }}
                                 style={{
                                     fontSize: '12px',
-                                    color: '#424245',
+                                    color: 'var(--text-secondary)',
                                     lineHeight: 1.6,
                                     marginBottom: '32px',
                                     maxWidth: '400px',
@@ -56,7 +57,7 @@ const LandingPage: React.FC = () => {
                                 }}
                             >
                                 Real-time AI insights for industrial intelligence. <br />
-                                Turn your vision into actionable data.
+                                Turning vision into actionable data.
                             </motion.p>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -68,14 +69,14 @@ const LandingPage: React.FC = () => {
                                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                                     style={{
                                         padding: '16px 32px',
-                                        background: '#0a1a3a',
-                                        color: '#ffffff',
-                                        borderRadius: '30px',
+                                        background: 'var(--text-primary)',
+                                        color: 'var(--bg-primary)',
+                                        borderRadius: 'var(--radius-pill)',
                                         fontWeight: 600,
                                         fontSize: '18px',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        boxShadow: '0 10px 20px -5px rgba(10, 26, 58, 0.3)',
+                                        boxShadow: 'var(--shadow-soft)',
                                         transition: 'all 0.3s ease'
                                     }}
                                     onMouseEnter={(e) => {
@@ -93,7 +94,7 @@ const LandingPage: React.FC = () => {
                         </div>
 
                         {/* Right Content - Video */}
-                        <div style={{ flex: 1.26, position: 'relative' }}>
+                        <div style={{ flex: 1.51, position: 'relative' }}>
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -140,11 +141,11 @@ const LandingPage: React.FC = () => {
 
             {/* What Yantra Does - Products Section */}
             {/* What Yantra Does - Products Section (Bento Grid) */}
-            <section id="products" style={{ background: '#f5f5f7', padding: '100px 0' }}>
+            <section id="products" style={{ background: 'var(--bg-secondary)', padding: '100px 0' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>AI. ML. Intelligent Hardware.</h2>
-                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>Building foundation of modern business.</p>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>Intelligence-as-a-service. Delivered.</h2>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem' }}>Building tools of tomorrow</p>
                     </div>
 
                     {/* New Core Technology Video Section - Hidden until actual video is provided
@@ -194,57 +195,104 @@ const LandingPage: React.FC = () => {
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'auto', gap: '24px' }}>
 
-                        {/* Top Item: YCS Consultancy Services */}
+                        {/* Top Item: Vision Intelligence */}
                         <BentoCard
-                            delay={0.1}
+                            delay={0.05}
                             lightMode={false}
                             style={{
                                 gridColumn: 'span 12',
                                 padding: '60px',
-                                marginBottom: '24px',
-                                display: 'block',
-                                background: '#000000',
+                                background: 'black',
                                 minHeight: '450px',
                                 overflow: 'hidden',
                                 position: 'relative',
-                                border: '1px solid rgba(255,255,255,0.1)'
+                                border: '1px solid var(--border-color)',
+                                display: 'flex',
+                                flexDirection: 'column'
                             }}
                         >
-                            <div style={{ zIndex: 10, position: 'relative', maxWidth: '550px' }}>
-                                <div style={{ color: '#0071e3', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
-                                <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '20px', color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
-                                    Solvr.<br />
-                                    Android, iOS and Webapps.<br />
-                                    Delivered in 10 mins.
-                                </h3>
-                                <p style={{ color: '#d2d2d7', fontSize: '20px', lineHeight: 1.5, marginBottom: '32px', fontWeight: 400 }}>
-                                    Stop writing boilerplate code. Use Solvr to generate production-ready React Native and Next.js applications instantly.
-                                </p>
-                                {/* Solvr exploration link removed */}
+                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '330px' }}>
+                                <div>
+                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>VISION INTELLIGENCE</div>
+                                    <h3 style={{ fontSize: '34px', fontWeight: 700, color: 'white', letterSpacing: '-0.04em', lineHeight: 1.4 }}>
+                                        We count. We inform.<br />
+                                        We inspect. We inform.<br />
+                                        Theft? Pilferage? We inform.<br />
+                                        Potential threat? We detect. We inform
+                                    </h3>
+                                </div>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '18px', fontWeight: 600, marginTop: '40px' }}>
+                                    YantrAI / i-a-a-s / vision
+                                </div>
                             </div>
                         </BentoCard>
 
-                        {/* Medium Item 1: Kiran AI POS */}
-                        <BentoCard delay={0.1} style={{ gridColumn: 'span 6', padding: '40px' }}>
-                            <div style={{ zIndex: 2, position: 'relative' }}>
-                                <div style={{ color: '#86868b', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>RETAIL</div>
-                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Kiran AI POS</h3>
-                                <p style={{ color: '#1d1d1f', fontSize: '17px', maxWidth: '350px' }}>Intelligent Point of Sale system with built-in analytics and inventory forecasting.</p>
+                        {/* Medium Item 1: One Godown */}
+                        <BentoCard delay={0.1} lightMode={false} style={{ gridColumn: 'span 6', padding: '40px', display: 'flex', flexDirection: 'column' }}>
+                            <div style={{ zIndex: 2, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '220px' }}>
+                                <div>
+                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SUPPLY CHAIN</div>
+                                    <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', color: 'white', letterSpacing: '-0.03em' }}>One Godown</h3>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '17px' }}>AI-driven warehouse and inventory management platform.</p>
+                                </div>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '16px', fontWeight: 600, marginTop: '24px' }}>
+                                    YantrAI / OneGodown
+                                </div>
+                            </div>
+                            <div style={{ position: 'absolute', right: '20px', bottom: '20px', opacity: 0.3 }}>
+                                <BarChart3 size={150} color="var(--yantrai-blue)" />
+                            </div>
+                        </BentoCard>
+
+                        {/* Medium Item 2: Kiran AI POS */}
+                        <BentoCard delay={0.2} style={{ gridColumn: 'span 6', padding: '40px', display: 'flex', flexDirection: 'column' }}>
+                            <div style={{ zIndex: 2, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '220px' }}>
+                                <div>
+                                    <div style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>RETAIL</div>
+                                    <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Kiran AI POS</h3>
+                                    <p style={{ color: 'var(--text-primary)', fontSize: '17px', maxWidth: '350px' }}>Intelligent Point of Sale system with built-in analytics and inventory forecasting.</p>
+                                </div>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '16px', fontWeight: 600, marginTop: '24px' }}>
+                                    YantrAI / OneGodown / Kiran-AI-POS
+                                </div>
                             </div>
                             <div style={{ position: 'absolute', right: '-20px', bottom: '-20px', opacity: 0.1 }}>
                                 <Monitor size={200} color="#000" />
                             </div>
                         </BentoCard>
 
-                        {/* Medium Item 2: One Godown */}
-                        <BentoCard delay={0.2} lightMode={false} style={{ gridColumn: 'span 6', padding: '40px' }}>
-                            <div style={{ zIndex: 2, position: 'relative' }}>
-                                <div style={{ color: '#0071e3', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SUPPLY CHAIN</div>
-                                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', color: '#ffffff', letterSpacing: '-0.03em' }}>One Godown</h3>
-                                <p style={{ color: '#d2d2d7', fontSize: '17px' }}>AI-driven warehouse and inventory management platform.</p>
-                            </div>
-                            <div style={{ position: 'absolute', right: '20px', bottom: '20px', opacity: 0.3 }}>
-                                <BarChart3 size={150} color="#0071e3" />
+                        {/* Large Item: YCS Consultancy Services / Solvr */}
+                        <BentoCard
+                            delay={0.3}
+                            lightMode={false}
+                            style={{
+                                gridColumn: 'span 12',
+                                padding: '60px',
+                                background: 'black',
+                                minHeight: '450px',
+                                overflow: 'hidden',
+                                position: 'relative',
+                                border: '1px solid var(--border-color)',
+                                marginTop: '24px',
+                                display: 'flex',
+                                flexDirection: 'column'
+                            }}
+                        >
+                            <div style={{ zIndex: 10, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '330px', maxWidth: '550px' }}>
+                                <div>
+                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
+                                    <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '20px', color: 'white', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
+                                        Solvr.<br />
+                                        Android, iOS and Webapps.<br />
+                                        Delivered in 10 mins.
+                                    </h3>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '20px', lineHeight: 1.5, marginBottom: '32px', fontWeight: 400 }}>
+                                        Stop writing boilerplate code. Use Solvr to generate production-ready React Native and Next.js applications instantly.
+                                    </p>
+                                </div>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '18px', fontWeight: 600, marginTop: '40px' }}>
+                                    YantrAI / i-a-a-s / Solvr
+                                </div>
                             </div>
                         </BentoCard>
 
@@ -266,21 +314,21 @@ const LandingPage: React.FC = () => {
             </section>
 
             {/* Pedigree Founders Section */}
-            <section id="team" style={{ background: '#F9FAFB', padding: '120px 0' }}>
+            <section id="team" style={{ background: 'var(--bg-secondary)', padding: '120px 0' }}>
                 <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
                     <div style={{ marginBottom: '80px', textAlign: 'center' }}>
                         <h2 style={{
                             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             marginBottom: '20px',
-                            color: '#111827',
+                            color: 'var(--text-primary)',
                             letterSpacing: '-0.04em',
                             lineHeight: 1.1
                         }}>
                             The Team powering YantrAI.
                         </h2>
                         <p style={{
-                            color: '#4B5563',
+                            color: 'var(--text-secondary)',
                             fontSize: '1.25rem',
                             maxWidth: '700px',
                             margin: '0 auto',
@@ -445,11 +493,11 @@ const LandingPage: React.FC = () => {
             </section>
 
             {/* Career Section - Minimalist List & Expand */}
-            <section id="career" style={{ background: '#ffffff', padding: '100px 0' }}>
+            <section id="career" style={{ background: 'var(--bg-primary)', padding: '100px 0' }}>
                 <div className="container">
                     <div style={{ marginBottom: '60px', maxWidth: '600px' }}>
                         <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.1, letterSpacing: '-0.025em', textWrap: 'balance' }}>Join the team.</h2>
-                        <p style={{ color: '#86868b', fontSize: '1.25rem' }}>Help us build the next generation of industrial intelligence.</p>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem' }}>Help us build the next generation of industrial intelligence.</p>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         {[
@@ -473,7 +521,7 @@ const LandingPage: React.FC = () => {
 
 
             {/* Contact Section - Integrated Sales Pass */}
-            <section id="contact" style={{ background: '#000000', padding: '120px 0', overflow: 'hidden', position: 'relative' }}>
+            <section id="contact" style={{ background: 'black', padding: '120px 0', overflow: 'hidden', position: 'relative' }}>
                 {/* Background ambient light */}
                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(0, 113, 227, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
@@ -481,10 +529,10 @@ const LandingPage: React.FC = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '80px', alignItems: 'center' }}>
                         <div style={{ textAlign: 'left' }}>
                             <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em', textWrap: 'balance', color: 'white', lineHeight: 1.05 }}>Ready to scale?</h2>
-                            <p style={{ color: '#86868b', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '32px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '32px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
 
-                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: '#86868b', maxWidth: '400px', fontSize: '1.1rem', lineHeight: 1.5 }}>
-                                <MapPin size={24} style={{ color: '#0071e3', flexShrink: 0, marginTop: '4px' }} />
+                            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: 'var(--text-secondary)', maxWidth: '400px', fontSize: '1.1rem', lineHeight: 1.5 }}>
+                                <MapPin size={24} style={{ color: 'var(--yantrai-blue)', flexShrink: 0, marginTop: '4px' }} />
                                 <span>3rd Floor Tower A, SAS tower, Unit 309, near Medanta hospital, Medicity, Sector 38, Gurugram, Haryana 122001</span>
                             </div>
                         </div>
@@ -501,6 +549,8 @@ const LandingPage: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            <LifeAtYantrAISection />
 
             <Footer />
         </>

@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--apple-light-gray)'
+            background: 'var(--bg-secondary)'
         }}>
             <button
                 onClick={() => navigate('/')}
@@ -40,7 +40,7 @@ const LoginPage: React.FC = () => {
                     gap: '0.5rem',
                     cursor: 'pointer',
                     fontSize: '1rem',
-                    color: 'var(--apple-black)',
+                    color: 'var(--text-primary)',
                     opacity: 0.7
                 }}
             >
@@ -77,7 +77,7 @@ const LoginPage: React.FC = () => {
                                     transition: 'all 0.2s'
                                 }}
                                 placeholder="Username"
-                                onFocus={(e) => e.target.style.borderColor = '#0071e3'}
+                                onFocus={(e) => e.target.style.borderColor = 'var(--yantrai-blue)'}
                                 onBlur={(e) => e.target.style.borderColor = '#d2d2d7'}
                             />
                         </div>
@@ -98,7 +98,7 @@ const LoginPage: React.FC = () => {
                                     transition: 'all 0.2s'
                                 }}
                                 placeholder="Password"
-                                onFocus={(e) => e.target.style.borderColor = '#0071e3'}
+                                onFocus={(e) => e.target.style.borderColor = 'var(--yantrai-blue)'}
                                 onBlur={(e) => e.target.style.borderColor = '#d2d2d7'}
                             />
                         </div>
@@ -118,7 +118,7 @@ const LoginPage: React.FC = () => {
                         Sign In
                     </button>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                        <a href="#" style={{ color: '#0071e3', fontSize: '13px' }}>Forgot password?</a>
+                        <a href="#" style={{ color: 'var(--yantrai-blue)', fontSize: '13px' }}>Forgot password?</a>
                     </div>
                 </form>
             </div>

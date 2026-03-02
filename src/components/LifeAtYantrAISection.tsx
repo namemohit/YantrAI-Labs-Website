@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Heart, Zap, Shield, ZoomIn, ZoomOut, X } from 'lucide-react';
 
@@ -54,7 +52,7 @@ const values = [
     }
 ];
 
-const LifeAtYantrAI: React.FC = () => {
+const LifeAtYantrAISection: React.FC = () => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [zoomLevel, setZoomLevel] = useState(1);
@@ -101,16 +99,14 @@ const LifeAtYantrAI: React.FC = () => {
         };
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [lightboxOpen, activeGallery, nextImage, prevImage, closeLightbox]);
+    }, [lightboxOpen, activeGallery]);
 
     const getCurrentImage = () => {
         return activeGallery === "milestones" ? milestones[currentIndex].image : lifeImages[currentIndex];
     };
 
     return (
-        <div style={{ background: "#ffffff", color: "#1d1d1f", minHeight: "100vh", overflowX: "hidden" }}>
-            <Navbar theme="light" />
-
+        <section id="life" style={{ background: "#ffffff", color: "#1d1d1f", overflowX: "hidden" }}>
             <AnimatePresence>
                 {lightboxOpen && (
                     <motion.div
@@ -183,110 +179,89 @@ const LifeAtYantrAI: React.FC = () => {
                 )}
             </AnimatePresence>
 
-            {/* Hero Section */}
-            <section style={{ height: "80vh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden", background: "#f5f5f7" }}>
-                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 70% 30%, rgba(0, 113, 227, 0.05) 0%, transparent 60%)", zIndex: 0 }}></div>
-                <div className="container" style={{ textAlign: "center", zIndex: 1, padding: "0 24px" }}>
-                    <motion.h1
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        style={{ fontSize: "clamp(4rem, 8vw, 7rem)", fontWeight: 700, letterSpacing: "-0.04em", margin: 0, lineHeight: 0.9, color: "#1d1d1f" }}
-                    >
-                        Life at <br />
-                        <span style={{ color: "#0071e3" }}>YantrAI.</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        style={{ fontSize: "1.5rem", color: "#424245", marginTop: "2rem", maxWidth: "600px", margin: "2rem auto" }}
-                    >
-                        Where engineering excellence meets visionary impact. Our journey is driven by people, purpose, and pioneering technology.
-                    </motion.p>
-                </div>
-            </section>
-
-            {/* Impact Moments Section */}
-            <section style={{ padding: "100px 0" }}>
+            {/* Content Section */}
+            <div style={{ padding: "100px 0" }}>
                 <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                     <div style={{ marginBottom: "80px", textAlign: "center" }}>
-                        <h2 style={{ fontSize: "48px", fontWeight: 700, marginBottom: "1rem", color: "#1d1d1f" }}>Impact Moments</h2>
-                        <p style={{ color: "#86868b", fontSize: "20px" }}>Beyond code. Making a difference at the highest levels.</p>
+                        <h2 style={{ fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 700, letterSpacing: "-0.04em", margin: "0 0 1rem 0", lineHeight: 1.1 }}>Life at <span style={{ color: "#0071e3" }}>YantrAI.</span></h2>
+                        <p style={{ color: "#86868b", fontSize: "20px", maxWidth: "800px", margin: "0 auto" }}>Where engineering excellence meets visionary impact. Capturing the energy, collaboration, and spirit of our team.</p>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "40px" }}>
-                        {milestones.map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.2 }}
-                                onClick={() => openLightbox(i, "milestones")}
-                                style={{
-                                    gridColumn: i === 0 ? "span 12" : "span 6",
-                                    position: "relative",
-                                    borderRadius: "32px",
-                                    overflow: "hidden",
-                                    height: i === 0 ? "600px" : "450px",
-                                    border: "1px solid rgba(0,0,0,0.05)",
-                                    boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                                    cursor: "pointer"
-                                }}
-                                whileHover={{ scale: 1.02 }}
-                            >
-                                <img src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-                                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "40px", background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)", color: "white" }}>
-                                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#0071e3", letterSpacing: "0.1em" }}>{item.year}</span>
-                                    <h3 style={{ fontSize: "28px", fontWeight: 700, marginTop: "8px", color: "#ffffff" }}>{item.title}</h3>
-                                    <p style={{ color: "#d2d2d7", fontSize: "18px", maxWidth: "500px", margin: 0, marginTop: "8px" }}>{item.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
-            {/* Life in Action Section */}
-            <section style={{ padding: "0 0 100px 0" }}>
-                <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                    <div style={{ marginBottom: "60px", textAlign: "center" }}>
-                        <h2 style={{ fontSize: "40px", fontWeight: 700, marginBottom: "1rem", color: "#1d1d1f" }}>Life in Action</h2>
-                        <p style={{ color: "#86868b", fontSize: "18px" }}>Capturing the energy, collaboration, and spirit of our team.</p>
+                    {/* Impact Moments Section */}
+                    <div style={{ marginBottom: "100px" }}>
+                        <div style={{ marginBottom: "40px" }}>
+                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#1d1d1f" }}>Impact Moments</h3>
+                            <p style={{ color: "#86868b", fontSize: "18px" }}>Beyond code. Making a difference at the highest levels.</p>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "40px" }}>
+                            {milestones.map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.2 }}
+                                    onClick={() => openLightbox(i, "milestones")}
+                                    style={{
+                                        gridColumn: i === 0 ? "span 12" : "span 6",
+                                        position: "relative",
+                                        borderRadius: "32px",
+                                        overflow: "hidden",
+                                        height: i === 0 ? "600px" : "450px",
+                                        border: "1px solid rgba(0,0,0,0.05)",
+                                        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                                        cursor: "pointer"
+                                    }}
+                                    whileHover={{ scale: 1.02 }}
+                                >
+                                    <img src={item.image} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "40px", background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)", color: "white" }}>
+                                        <span style={{ fontSize: "14px", fontWeight: 600, color: "#0071e3", letterSpacing: "0.1em" }}>{item.year}</span>
+                                        <h3 style={{ fontSize: "28px", fontWeight: 700, marginTop: "8px", color: "#ffffff" }}>{item.title}</h3>
+                                        <p style={{ color: "#d2d2d7", fontSize: "18px", maxWidth: "500px", margin: 0, marginTop: "8px" }}>{item.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "24px", gridAutoRows: "300px" }}>
-                        {lifeImages.map((src, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                onClick={() => openLightbox(i, "life")}
-                                style={{
-                                    gridColumn: i === 0 || i === 5 ? "span 8" : "span 4",
-                                    borderRadius: "24px",
-                                    overflow: "hidden",
-                                    cursor: "pointer"
-                                }}
-                                whileHover={{ scale: 1.02 }}
-                            >
-                                <img src={src} alt="Team Moment" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
-            {/* Values Section */}
-            <section style={{ padding: "100px 0", background: "#f5f5f7" }}>
-                <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+                    {/* Life in Action Section */}
+                    <div style={{ marginBottom: "100px" }}>
+                        <div style={{ marginBottom: "40px" }}>
+                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#1d1d1f" }}>Life in Action</h3>
+                            <p style={{ color: "#86868b", fontSize: "18px" }}>The spirit of our team in motion.</p>
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "24px", gridAutoRows: "300px" }}>
+                            {lifeImages.map((src, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    onClick={() => openLightbox(i, "life")}
+                                    style={{
+                                        gridColumn: i === 0 || i === 5 ? "span 8" : "span 4",
+                                        borderRadius: "24px",
+                                        overflow: "hidden",
+                                        cursor: "pointer"
+                                    }}
+                                    whileHover={{ scale: 1.02 }}
+                                >
+                                    <img src={src} alt="Team Moment" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Values Section */}
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
                         gap: "40px"
                     }}>
                         {values.map((v, i) => (
-                            <div key={i} style={{ padding: "40px", borderRadius: "24px", background: "#ffffff", border: "1px solid rgba(0,0,0,0.05)", boxShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
+                            <div key={i} style={{ padding: "40px", borderRadius: "24px", background: "#f5f5f7", border: "1px solid rgba(0,0,0,0.05)", boxShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
                                 <div style={{ marginBottom: "24px" }}>{v.icon}</div>
                                 <h3 style={{ fontSize: "24px", fontWeight: 600, marginBottom: "16px", color: "#1d1d1f" }}>{v.title}</h3>
                                 <p style={{ color: "#424245", lineHeight: 1.6, margin: 0 }}>{v.desc}</p>
@@ -294,11 +269,9 @@ const LifeAtYantrAI: React.FC = () => {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            <Footer />
-        </div>
+            </div>
+        </section>
     );
 };
 
-export default LifeAtYantrAI;
+export default LifeAtYantrAISection;
