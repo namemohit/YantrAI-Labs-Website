@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminPanel from './components/AdminPanel';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import YCSPage from './pages/YCSPage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import EnterpriseSolutions from './pages/EnterpriseSolutions';
 
@@ -17,8 +16,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/ycs" element={<YCSPage />} />
-          <Route path="/case-study" element={<CaseStudyPage />} />
+          <Route path="/onegodown/kiran-ai-pos" element={<CaseStudyPage />} />
+          <Route path="/i-a-a-s" element={<EnterpriseSolutions />} /> {/* Placeholder */}
+          <Route path="/i-a-a-s/visionai" element={<EnterpriseSolutions />} /> {/* Placeholder */}
+          <Route path="/onegodown" element={<EnterpriseSolutions />} /> {/* Placeholder */}
           <Route path="/enterprise" element={<EnterpriseSolutions />} />
           <Route path="/delivered-projects" element={<DeliveredProjects />} />
 

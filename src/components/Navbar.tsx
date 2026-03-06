@@ -26,8 +26,10 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
             name: 'Products & Services',
             href: '/#products',
             dropdown: [
-                { name: 'YCS - YantrAI Consultancy Services', href: '/ycs' },
-                { name: 'Kiran - AI POS (Point of Sale)', href: '/case-study' }
+                { name: 'Intelligence-as-a-service', href: '/i-a-a-s' },
+                { name: 'Vision.ai', href: '/i-a-a-s/visionai' },
+                { name: 'OneGodown', href: '/onegodown' },
+                { name: 'Kiran - AI POS (Point of Sale)', href: '/onegodown/kiran-ai-pos' }
             ]
         },
 
