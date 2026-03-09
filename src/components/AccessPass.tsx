@@ -76,6 +76,7 @@ const AccessPass: React.FC<AccessPassProps> = ({ name, role, phone, email, image
                 <div style={{ marginBottom: '30px' }}>
                     <div style={{ fontSize: '12px', color: '#d2d2d7', fontWeight: 600, textTransform: 'uppercase', marginBottom: '4px', letterSpacing: '1px' }}>{role}</div>
                     <h3 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '2px', letterSpacing: '-0.02em', color: '#ffffff' }}>{name}</h3>
+                    <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>+91 {phone}</div>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>

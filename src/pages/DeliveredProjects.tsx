@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 
 const ProjectRow = ({ title, description, image, isReversed, accent }: { title: string, description: string, image: string, isReversed?: boolean, accent: string }) => (
-    <section style={{ padding: '100px 0', backgroundColor: isReversed ? '#fbfbfd' : '#ffffff' }}>
+    <section style={{ padding: '100px 0', backgroundColor: isReversed ? '#050505' : '#000000', color: '#fff' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
             <div style={{
                 display: 'flex',
@@ -20,8 +20,8 @@ const ProjectRow = ({ title, description, image, isReversed, accent }: { title: 
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '24px', letterSpacing: '-0.02em', color: '#1d1d1f' }}>{title}</h2>
-                        <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: '#86868b', marginBottom: '40px' }}>{description}</p>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '24px', letterSpacing: '-0.02em', color: '#fff' }}>{title}</h2>
+                        <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '40px' }}>{description}</p>
                         <button style={{
                             padding: '12px 28px',
                             backgroundColor: accent,
@@ -59,11 +59,11 @@ const ProjectRow = ({ title, description, image, isReversed, accent }: { title: 
 
 const DeliveredProjects: React.FC = () => {
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', color: '#1d1d1f' }}>
-            <Navbar theme="light" />
+        <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff' }}>
+            <Navbar theme="dark" />
 
             {/* Hero Section */}
-            <section style={{ padding: '160px 0 100px 0', textAlign: 'center', background: '#ffffff' }}>
+            <section style={{ padding: '160px 0 100px 0', textAlign: 'center', background: '#000000' }}>
                 <div className="container">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -74,7 +74,7 @@ const DeliveredProjects: React.FC = () => {
                             fontWeight: 800,
                             marginBottom: '24px',
                             letterSpacing: '-0.04em',
-                            color: '#1d1d1f',
+                            color: '#fff',
                             lineHeight: 1.1
                         }}
                     >
@@ -84,7 +84,7 @@ const DeliveredProjects: React.FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        style={{ fontSize: '1.5rem', color: '#86868b', maxWidth: '700px', margin: '0 auto', lineHeight: 1.4 }}
+                        style={{ fontSize: '1.5rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', lineHeight: 1.4 }}
                     >
                         Real-world industrial solutions engineered to scale. Explore how we're transforming sectors with AI.
                     </motion.p>
@@ -115,21 +115,21 @@ const DeliveredProjects: React.FC = () => {
             />
 
             {/* Bottom CTA */}
-            <section style={{ padding: '140px 0', textAlign: 'center', backgroundColor: '#ffffff', borderTop: '1px solid #f5f5f7' }}>
+            <section style={{ padding: '140px 0', textAlign: 'center', backgroundColor: '#000', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '32px', letterSpacing: '-0.03em' }}>
+                        <h2 style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '32px', letterSpacing: '-0.03em', color: '#fff' }}>
                             Have a problem worth solving?
                         </h2>
                         <button
                             onClick={() => window.location.href = '/#contact'}
                             style={{
                                 padding: '18px 48px',
-                                backgroundColor: '#1d1d1f',
+                                backgroundColor: 'var(--yantrai-blue)',
                                 color: '#fff',
                                 borderRadius: '100px',
                                 fontSize: '1.25rem',
@@ -142,10 +142,14 @@ const DeliveredProjects: React.FC = () => {
                             onMouseOver={(e) => {
                                 (e.currentTarget as any).style.transform = 'scale(1.05)';
                                 (e.currentTarget as any).style.backgroundColor = '#000';
+                                (e.currentTarget as any).style.boxShadow = '0 0 20px rgba(0, 113, 227, 0.4)';
+                                (e.currentTarget as any).style.border = '1px solid var(--yantrai-blue)';
                             }}
                             onMouseOut={(e) => {
                                 (e.currentTarget as any).style.transform = 'scale(1)';
-                                (e.currentTarget as any).style.backgroundColor = '#1d1d1f';
+                                (e.currentTarget as any).style.backgroundColor = 'var(--yantrai-blue)';
+                                (e.currentTarget as any).style.boxShadow = 'none';
+                                (e.currentTarget as any).style.border = 'none';
                             }}
                         >
                             Start a Project

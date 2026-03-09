@@ -1,301 +1,204 @@
+import React from 'react';
 import { useApp } from '../AppContext';
 import { motion } from 'framer-motion';
-import { Monitor, BarChart3, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import LifeAtYantrAISection from '../components/LifeAtYantrAISection';
 import BentoCard from '../components/BentoCard';
 import ExpandableJobItem from '../components/ExpandableJobItem';
 import AccessPass from '../components/AccessPass';
 import Footer from '../components/Footer';
+import StackLayer from '../components/StackLayer';
+import AnimeLight from '../components/AnimeLight';
+import CaseStudiesSlider from '../components/CaseStudiesSlider';
 
 const LandingPage: React.FC = () => {
     const { data } = useApp();
 
-
-
     return (
-        <>
+        <div style={{ background: '#000', color: '#fff' }}>
+            <AnimeLight />
             <div id="about"></div>
-
-            {/* Navigation */}
-            {/* Navigation */}
             <Navbar />
 
-            {/* Hero Section */}
-            <section style={{ height: '72vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', padding: '80px 0', background: 'var(--bg-hero-gradient)' }}>
+            {/* Hero Section - Reimagined for 3D/Black Theme */}
+            <section style={{ 
+                height: '90vh', 
+                display: 'flex', 
+                alignItems: 'center', 
+                position: 'relative', 
+                overflow: 'hidden', 
+                padding: '0', 
+                background: '#000' 
+            }}>
                 <div style={{ width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '80px' }}>
-
-                        {/* Left Content */}
-                        <div style={{ flex: 1, minWidth: '500px', marginLeft: '80px' }}>
-                            <motion.h1
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8 }}
-                                style={{
-                                    fontSize: '46px',
-                                    fontWeight: 800,
-                                    lineHeight: 1.1,
-                                    letterSpacing: '-0.04em',
-                                    marginBottom: '16px',
-                                    color: 'var(--yantrai-blue)'
-                                }}
-                            >
-                                Turn images into AI to get useful insights.
-                            </motion.h1>
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
-                                style={{
-                                    fontSize: '12px',
-                                    color: 'var(--text-secondary)',
-                                    lineHeight: 1.6,
-                                    marginBottom: '32px',
-                                    maxWidth: '400px',
-                                    fontWeight: 400
-                                }}
-                            >
-                                Real-time AI insights for industrial intelligence. <br />
-                                Turning vision into actionable data.
-                            </motion.p>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
-                                style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '40px' }}
-                            >
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <h1 style={{
+                                fontSize: 'clamp(4rem, 10vw, 8rem)',
+                                fontWeight: 800,
+                                lineHeight: 0.9,
+                                letterSpacing: '-0.06em',
+                                marginBottom: '24px',
+                                color: '#fff',
+                                textShadow: '0 0 30px rgba(0, 113, 227, 0.2)'
+                            }}>
+                                Industrial AI.<br />
+                                <span style={{ color: 'var(--yantrai-blue)' }}>Visionary Depth.</span>
+                            </h1>
+                            <p style={{
+                                fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
+                                color: 'var(--text-secondary)',
+                                lineHeight: 1.4,
+                                marginBottom: '48px',
+                                maxWidth: '600px',
+                                margin: '0 auto 48px auto',
+                                fontWeight: 400
+                            }}>
+                                We transform raw pixels into operational intelligence. <br />
+                                Discover the Vision-App-BI stack.
+                            </p>
+                            <div style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
                                 <button
-                                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                    onClick={() => document.getElementById('vision-layer')?.scrollIntoView({ behavior: 'smooth' })}
                                     style={{
-                                        padding: '16px 32px',
-                                        background: 'var(--text-primary)',
-                                        color: 'var(--bg-primary)',
+                                        padding: '20px 48px',
+                                        background: 'var(--yantrai-blue)',
+                                        color: '#fff',
                                         borderRadius: 'var(--radius-pill)',
                                         fontWeight: 600,
                                         fontSize: '18px',
                                         border: 'none',
                                         cursor: 'pointer',
-                                        boxShadow: 'var(--shadow-soft)',
+                                        boxShadow: '0 10px 30px rgba(0, 113, 227, 0.3)',
                                         transition: 'all 0.3s ease'
                                     }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-2px)';
-                                        e.currentTarget.style.boxShadow = '0 15px 25px -5px rgba(10, 26, 58, 0.4)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.transform = 'none';
-                                        e.currentTarget.style.boxShadow = '0 10px 20px -5px rgba(10, 26, 58, 0.3)';
-                                    }}
                                 >
-                                    Get in touch
+                                    Explore the Stack
                                 </button>
-                            </motion.div>
-                        </div>
-
-                        {/* Right Content - Video */}
-                        <div style={{ flex: 1.51, position: 'relative' }}>
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 1, delay: 0.2 }}
-                                style={{
-                                    borderRadius: '32px',
-                                    overflow: 'hidden',
-                                    boxShadow: '0 50px 100px -20px rgba(0,0,0,0.25)',
-                                    position: 'relative',
-                                    border: '1px solid rgba(255,255,255,0.4)',
-                                    background: '#000'
-                                }}
-                            >
-                                <video
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    style={{
-                                        width: '100%',
-                                        height: 'auto',
-                                        display: 'block',
-                                        aspectRatio: '16/9',
-                                        objectFit: 'cover'
-                                    }}
-                                >
-                                    <source src="/assets/ultralytics_hero.mp4" type="video/mp4" />
-                                </video>
-                            </motion.div>
-                        </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
 
-                {/* Subtle Grid Pattern Overlay */}
+                {/* Ambient Depth Elements */}
                 <div style={{
                     position: 'absolute',
-                    inset: 0,
-                    opacity: 0.05,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '120vw',
+                    height: '100vh',
+                    background: 'radial-gradient(circle at center, rgba(0, 113, 227, 0.08) 0%, transparent 60%)',
                     pointerEvents: 'none',
-                    backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)',
-                    backgroundSize: '24px 24px'
+                    zIndex: 1
                 }} />
             </section>
 
-            {/* What Yantra Does - Products Section */}
-            {/* What Yantra Does - Products Section (Bento Grid) */}
-            <section id="products" style={{ background: 'var(--bg-secondary)', padding: '100px 0' }}>
+            {/* Content Stack - Vision, App, BI */}
+            <div id="vision-layer">
+                <StackLayer
+                    index={0}
+                    total={3}
+                    subtitle="Vision Layer"
+                    title="Intelligence-as-a-Service"
+                    description="Our foundational neural networks process live industrial feeds in real-time. We count, inspect, and detect anomalies before they become problems."
+                    videoSrc="/assets/Manufacturing_VAI.mp4"
+                />
+            </div>
+            
+            <div id="app-layer">
+                <StackLayer
+                    index={1}
+                    total={3}
+                    subtitle="App Layer"
+                    title="Operational Power"
+                    description="From Retail POS to Warehouse management, our apps turn Vision into Action. Real-time dashboards and automated workflows powered by YantrAI."
+                    videoSrc="/assets/Retail_VAI.mp4"
+                />
+            </div>
+
+            <div id="bi-layer">
+                <StackLayer
+                    index={2}
+                    total={3}
+                    subtitle="Intelligence Layer"
+                    title="Business BI"
+                    description="Long-term forecasting, security audits, and predictive analytics. Take the pulse of your entire organization with AI-driven insights."
+                    videoSrc="/assets/Security_VAI.mp4"
+                />
+            </div>
+
+            {/* Delivered Solutions - Grid */}
+            <section id="products" style={{ background: '#050505', padding: '120px 0' }}>
                 <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.025em', textWrap: 'balance' }}>Intelligence-as-a-service. Delivered.</h2>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem' }}>Building tools of tomorrow</p>
+                    <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                        <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 700, marginBottom: '1.5rem', color: '#fff' }}>Products & Services.</h2>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem' }}>Industrial-grade AI ecosystems tailored for scale.</p>
                     </div>
 
-                    {/* New Core Technology Video Section - Hidden until actual video is provided
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        style={{
-                            width: '100%',
-                            maxWidth: '1200px',
-                            margin: '0 auto 80px auto',
-                            borderRadius: '24px',
-                            overflow: 'hidden',
-                            boxShadow: '0 40px 100px -20px rgba(0,0,0,0.15)',
-                            backgroundColor: '#000',
-                            border: '1px solid rgba(0,0,0,0.05)',
-                            position: 'relative'
-                        }}
-                    >
-                        <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                style={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover'
-                                }}
-                            >
-                                <source src="/assets/ultralytics_hero.mp4" type="video/mp4" />
-                            </video>
-                            <div style={{
-                                position: 'absolute',
-                                inset: 0,
-                                background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4) 100%)',
-                                pointerEvents: 'none'
-                            }} />
-                        </div>
-                    </motion.div>
-                    */}
+                    <CaseStudiesSlider />
 
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '24px' }}>
+                        <BentoCard delay={0.1} style={{ gridColumn: 'span 6', padding: '40px', minHeight: '300px' }}>
+                            <div style={{ zIndex: 10, position: 'relative' }}>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SUPPLY CHAIN</div>
+                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#fff' }}>One Godown</h3>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>AI-driven warehouse and inventory management platform.</p>
+                            </div>
+                        </BentoCard>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'auto', gap: '24px' }}>
+                        <BentoCard delay={0.2} style={{ gridColumn: 'span 6', padding: '40px', minHeight: '300px' }}>
+                            <div style={{ zIndex: 10, position: 'relative' }}>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>RETAIL</div>
+                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#fff' }}>Kiran AI POS</h3>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Intelligent Point of Sale system with built-in analytics.</p>
+                            </div>
+                        </BentoCard>
 
-                        {/* Top Item: Vision Intelligence */}
-                        <BentoCard
-                            delay={0.05}
-                            lightMode={false}
-                            style={{
-                                gridColumn: 'span 12',
-                                padding: '60px',
-                                background: 'black',
-                                minHeight: '450px',
-                                overflow: 'hidden',
-                                position: 'relative',
-                                border: '1px solid var(--border-color)',
-                                display: 'flex',
-                                flexDirection: 'column'
+                        <BentoCard delay={0.3} style={{ gridColumn: 'span 12', padding: '60px', minHeight: '400px', background: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 100%)' }}>
+                             <div style={{ zIndex: 10, position: 'relative', maxWidth: '600px' }}>
+                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
+                                <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '24px', color: '#fff', lineHeight: 1.1 }}>Solvr. Apps delivered in 10 mins.</h3>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '20px', lineHeight: 1.6, marginBottom: '24px' }}>Generate production-ready React Native and Next.js applications instantly using your design specs.</p>
+                            </div>
+                        </BentoCard>
+                    </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '60px' }}>
+                        <a 
+                            href="https://rohitwa.github.io/Yantrai_case_studies/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            style={{ 
+                                color: 'var(--yantrai-blue)', 
+                                fontSize: '20px', 
+                                fontWeight: 600, 
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                transition: 'all 0.3s ease',
+                                border: '1px solid rgba(0, 113, 227, 0.3)',
+                                padding: '16px 32px',
+                                borderRadius: 'var(--radius-pill)',
+                                background: 'rgba(0, 113, 227, 0.05)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 113, 227, 0.1)';
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(0, 113, 227, 0.05)';
+                                e.currentTarget.style.transform = 'translateY(0)';
                             }}
                         >
-                            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '330px' }}>
-                                <div>
-                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>VISION INTELLIGENCE</div>
-                                    <h3 style={{ fontSize: '34px', fontWeight: 700, color: 'white', letterSpacing: '-0.04em', lineHeight: 1.4 }}>
-                                        We count. We inform.<br />
-                                        We inspect. We inform.<br />
-                                        Theft? Pilferage? We inform.<br />
-                                        Potential threat? We detect. We inform
-                                    </h3>
-                                </div>
-                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '18px', fontWeight: 600, marginTop: '40px' }}>
-                                    YantrAI / i-a-a-s / vision
-                                </div>
-                            </div>
-                        </BentoCard>
-
-                        {/* Medium Item 1: One Godown */}
-                        <BentoCard delay={0.1} lightMode={false} style={{ gridColumn: 'span 6', padding: '40px', display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ zIndex: 2, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '220px' }}>
-                                <div>
-                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SUPPLY CHAIN</div>
-                                    <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', color: 'white', letterSpacing: '-0.03em' }}>One Godown</h3>
-                                    <p style={{ color: 'var(--text-secondary)', fontSize: '17px' }}>AI-driven warehouse and inventory management platform.</p>
-                                </div>
-                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '16px', fontWeight: 600, marginTop: '24px' }}>
-                                    YantrAI / OneGodown
-                                </div>
-                            </div>
-                            <div style={{ position: 'absolute', right: '20px', bottom: '20px', opacity: 0.3 }}>
-                                <BarChart3 size={150} color="var(--yantrai-blue)" />
-                            </div>
-                        </BentoCard>
-
-                        {/* Medium Item 2: Kiran AI POS */}
-                        <BentoCard delay={0.2} style={{ gridColumn: 'span 6', padding: '40px', display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ zIndex: 2, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '220px' }}>
-                                <div>
-                                    <div style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>RETAIL</div>
-                                    <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', letterSpacing: '-0.03em' }}>Kiran AI POS</h3>
-                                    <p style={{ color: 'var(--text-primary)', fontSize: '17px', maxWidth: '350px' }}>Intelligent Point of Sale system with built-in analytics and inventory forecasting.</p>
-                                </div>
-                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '16px', fontWeight: 600, marginTop: '24px' }}>
-                                    YantrAI / OneGodown / Kiran-AI-POS
-                                </div>
-                            </div>
-                            <div style={{ position: 'absolute', right: '-20px', bottom: '-20px', opacity: 0.1 }}>
-                                <Monitor size={200} color="#000" />
-                            </div>
-                        </BentoCard>
-
-                        {/* Large Item: YCS Consultancy Services / Solvr */}
-                        <BentoCard
-                            delay={0.3}
-                            lightMode={false}
-                            style={{
-                                gridColumn: 'span 12',
-                                padding: '60px',
-                                background: 'black',
-                                minHeight: '450px',
-                                overflow: 'hidden',
-                                position: 'relative',
-                                border: '1px solid var(--border-color)',
-                                marginTop: '24px',
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <div style={{ zIndex: 10, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', minHeight: '330px', maxWidth: '550px' }}>
-                                <div>
-                                    <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
-                                    <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '20px', color: 'white', letterSpacing: '-0.04em', lineHeight: 1.1 }}>
-                                        Solvr.<br />
-                                        Android, iOS and Webapps.<br />
-                                        Delivered in 10 mins.
-                                    </h3>
-                                    <p style={{ color: 'var(--text-secondary)', fontSize: '20px', lineHeight: 1.5, marginBottom: '32px', fontWeight: 400 }}>
-                                        Stop writing boilerplate code. Use Solvr to generate production-ready React Native and Next.js applications instantly.
-                                    </p>
-                                </div>
-                                <div style={{ color: 'var(--yantrai-blue)', fontSize: '18px', fontWeight: 600, marginTop: '40px' }}>
-                                    YantrAI / i-a-a-s / Solvr
-                                </div>
-                            </div>
-                        </BentoCard>
-
+                            Explore all Case Studies and Products →
+                        </a>
                     </div>
 
                     <style>{`
@@ -309,19 +212,18 @@ const LandingPage: React.FC = () => {
                             }
                         }
                     `}</style>
-
                 </div>
             </section>
 
             {/* Pedigree Founders Section */}
-            <section id="team" style={{ background: 'var(--bg-secondary)', padding: '120px 0' }}>
+            <section id="team" style={{ background: '#0a0a0a', padding: '120px 0' }}>
                 <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
                     <div style={{ marginBottom: '80px', textAlign: 'center' }}>
                         <h2 style={{
                             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
                             fontWeight: 800,
                             marginBottom: '20px',
-                            color: 'var(--text-primary)',
+                            color: '#fff',
                             letterSpacing: '-0.04em',
                             lineHeight: 1.1
                         }}>
@@ -384,12 +286,11 @@ const LandingPage: React.FC = () => {
                                     borderRadius: '32px',
                                     overflow: 'hidden',
                                     aspectRatio: '3/4',
-                                    backgroundColor: '#E5E7EB',
-                                    boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)',
+                                    backgroundColor: '#111',
+                                    boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
                                     cursor: 'pointer'
                                 }}
                             >
-                                {/* Grayscale Image */}
                                 <img
                                     src={founder.image}
                                     alt={founder.name}
@@ -397,12 +298,11 @@ const LandingPage: React.FC = () => {
                                         width: '100%',
                                         height: '100%',
                                         objectFit: 'cover',
-                                        filter: 'grayscale(100%) brightness(90%) contrast(110%)',
+                                        filter: 'grayscale(100%) brightness(80%) contrast(110%)',
                                         transition: 'all 0.5s ease'
                                     }}
                                 />
 
-                                {/* Static Info (Bottom) */}
                                 <div style={{
                                     position: 'absolute',
                                     bottom: 0,
@@ -436,7 +336,6 @@ const LandingPage: React.FC = () => {
                                     </p>
                                 </div>
 
-                                {/* Hover Overlay (Slider) */}
                                 <motion.div
                                     variants={{
                                         hover: { y: 0, opacity: 1 }
@@ -449,7 +348,7 @@ const LandingPage: React.FC = () => {
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        background: 'rgba(10, 10, 10, 0.95)',
+                                        background: 'rgba(5, 5, 5, 0.98)',
                                         padding: '40px 32px',
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -462,28 +361,14 @@ const LandingPage: React.FC = () => {
                                         <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '12px' }}>{founder.name}</h3>
                                         <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#e5e7eb' }}>{founder.intro}</p>
                                     </div>
-
                                     <div style={{ marginBottom: '24px' }}>
                                         <p style={{ color: '#9ca3af', fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '8px' }}>ACADEMIC</p>
                                         <p style={{ fontSize: '14px', fontWeight: 700 }}>{founder.academic}</p>
                                     </div>
-
                                     <div style={{ marginTop: 'auto', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px' }}>
                                         <p style={{ fontSize: '14px', fontStyle: 'italic', lineHeight: 1.6, color: '#9ca3af', marginBottom: '24px' }}>
                                             "{founder.quote}"
                                         </p>
-                                        <button style={{
-                                            padding: '10px 24px',
-                                            backgroundColor: '#0070f3',
-                                            color: '#fff',
-                                            border: 'none',
-                                            borderRadius: '50px',
-                                            fontSize: '13px',
-                                            fontWeight: 600,
-                                            cursor: 'pointer'
-                                        }}>
-                                            View LinkedIn
-                                        </button>
                                     </div>
                                 </motion.div>
                             </motion.div>
@@ -492,11 +377,11 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Career Section - Minimalist List & Expand */}
-            <section id="career" style={{ background: 'var(--bg-primary)', padding: '100px 0' }}>
+            {/* Career Section */}
+            <section id="career" style={{ background: '#000', padding: '100px 0' }}>
                 <div className="container">
                     <div style={{ marginBottom: '60px', maxWidth: '600px' }}>
-                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.1, letterSpacing: '-0.025em', textWrap: 'balance' }}>Join the team.</h2>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>Join the team.</h2>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem' }}>Help us build the next generation of industrial intelligence.</p>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -518,25 +403,19 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-
-
-            {/* Contact Section - Integrated Sales Pass */}
-            <section id="contact" style={{ background: 'black', padding: '120px 0', overflow: 'hidden', position: 'relative' }}>
-                {/* Background ambient light */}
+            {/* Contact Section */}
+            <section id="contact" style={{ background: '#000', padding: '120px 0', overflow: 'hidden', position: 'relative' }}>
                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(0, 113, 227, 0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
                 <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '80px', alignItems: 'center' }}>
                         <div style={{ textAlign: 'left' }}>
-                            <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em', textWrap: 'balance', color: 'white', lineHeight: 1.05 }}>Ready to scale?</h2>
+                            <h2 style={{ fontSize: '4rem', fontWeight: 700, marginBottom: '1.5rem', color: '#fff', lineHeight: 1.05 }}>Ready to scale?</h2>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '1.5rem', maxWidth: '500px', marginBottom: '32px' }}>Our dedicated team is ready to architect your custom industrial ecosystem.</p>
-
                             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: 'var(--text-secondary)', maxWidth: '400px', fontSize: '1.1rem', lineHeight: 1.5 }}>
                                 <MapPin size={24} style={{ color: 'var(--yantrai-blue)', flexShrink: 0, marginTop: '4px' }} />
                                 <span>3rd Floor Tower A, SAS tower, Unit 309, near Medanta hospital, Medicity, Sector 38, Gurugram, Haryana 122001</span>
                             </div>
                         </div>
-
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <AccessPass
                                 name={data.contactPerson || "Rohit Singh"}
@@ -551,9 +430,8 @@ const LandingPage: React.FC = () => {
             </section>
 
             <LifeAtYantrAISection />
-
             <Footer />
-        </>
+        </div>
     );
 };
 

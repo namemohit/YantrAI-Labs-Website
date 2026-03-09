@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminPanel from './components/AdminPanel';
 import LandingPage from './pages/LandingPage';
@@ -8,6 +8,13 @@ import EnterpriseSolutions from './pages/EnterpriseSolutions';
 
 import DeliveredProjects from './pages/DeliveredProjects';
 
+
+const RedirectToExperience: React.FC = () => {
+  useEffect(() => {
+    window.location.href = 'https://yantrai-vision-guide-ouov24tfqq-uc.a.run.app/experience/';
+  }, []);
+  return null;
+};
 
 const App: React.FC = () => {
   return (
@@ -22,6 +29,7 @@ const App: React.FC = () => {
           <Route path="/onegodown" element={<EnterpriseSolutions />} /> {/* Placeholder */}
           <Route path="/enterprise" element={<EnterpriseSolutions />} />
           <Route path="/delivered-projects" element={<DeliveredProjects />} />
+          <Route path="/experience" element={<RedirectToExperience />} />
 
         </Routes>
         <AdminPanel />

@@ -73,7 +73,6 @@ const BentoCard: React.FC<BentoCardProps> = ({
     style,
     className,
     delay = 0,
-    lightMode = true,
     showNeuralNetwork = false,
     showSheen = false,
     onMouseMove,
@@ -82,6 +81,10 @@ const BentoCard: React.FC<BentoCardProps> = ({
     const cardRef = useRef<HTMLDivElement>(null);
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
+
+    // 3D Tilt Values
+    const rotateX = useSpring(useTransform(mouseY, [0, 400], [10, -10]), { damping: 20, stiffness: 150 });
+    const rotateY = useSpring(useTransform(mouseX, [0, 1200], [-10, 10]), { damping: 20, stiffness: 150 });
 
     // Smooth physics for the spotlight
     const spotlightX = useSpring(mouseX, { damping: 20, stiffness: 150 });
@@ -96,22 +99,15 @@ const BentoCard: React.FC<BentoCardProps> = ({
     };
 
     const handleMouseLeaveInner = (e: React.MouseEvent<HTMLDivElement>) => {
+        mouseX.set(0);
+        mouseY.set(0);
         if (onMouseLeave) onMouseLeave(e);
     };
 
-    const baseBackground = lightMode
-        ? 'rgba(255, 255, 255, 0.7)'
-        : 'rgba(0, 0, 0, 0.95)'; // Significant contrast restoration as requested
+    const baseBackground = 'rgba(10, 10, 10, 0.8)';
+    const borderColor = 'rgba(255, 255, 255, 0.1)';
+    const spotlightColor = 'rgba(0, 113, 227, 0.15)';
 
-    const borderColor = lightMode
-        ? 'rgba(255, 255, 255, 0.4)'
-        : 'rgba(255, 255, 255, 0.1)';
-
-    const spotlightColor = lightMode
-        ? 'rgba(0, 113, 227, 0.15)'
-        : 'rgba(255, 255, 255, 0.12)';
-
-    // Using Framer Motion hooks to drive the radial gradient background
     const background = useTransform(
         [spotlightX, spotlightY],
         ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, ${spotlightColor}, transparent 40%)`
@@ -128,6 +124,9 @@ const BentoCard: React.FC<BentoCardProps> = ({
             onMouseLeave={handleMouseLeaveInner}
             style={{
                 ...style,
+                perspective: 1000,
+                rotateX,
+                rotateY,
                 position: 'relative',
                 background: style?.background || baseBackground,
                 backdropFilter: style?.backdropFilter || 'blur(20px)',
@@ -135,9 +134,8 @@ const BentoCard: React.FC<BentoCardProps> = ({
                 borderRadius: style?.borderRadius || '24px',
                 border: style?.border || `1px solid ${borderColor}`,
                 overflow: 'hidden',
-                boxShadow: style?.boxShadow || (lightMode
-                    ? '0 8px 32px -4px rgba(0, 0, 0, 0.08)'
-                    : '0 20px 40px rgba(0, 0, 0, 0.6)'),
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+                transformStyle: 'preserve-3d'
             }}
             className={className}
         >
@@ -157,14 +155,8 @@ const BentoCard: React.FC<BentoCardProps> = ({
                         zIndex: 3,
                         pointerEvents: 'none'
                     }}
-                    animate={{
-                        rotate: [0, 360]
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                 />
             )}
 
@@ -179,7 +171,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
                 }}
             />
 
-            <div style={{ position: 'relative', zIndex: 4 }}>
+            <div style={{ position: 'relative', zIndex: 4, transform: 'translateZ(50px)' }}>
                 {children}
             </div>
         </motion.div>

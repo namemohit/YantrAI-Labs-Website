@@ -6,7 +6,14 @@ interface NavbarProps {
     theme?: 'light' | 'dark';
 }
 
-const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
+interface NavLink {
+    name: string;
+    href: string;
+    dropdown?: { name: string; href: string }[];
+    isHighlighted?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
     const isDarkTheme = theme === 'dark';
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,23 +27,18 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const b2bLinks = [
-        { name: 'Know YantrAI', href: '/#about' },
+    const b2bLinks: NavLink[] = [
+        { name: 'Home', href: '/' },
         {
             name: 'Products & Services',
-            href: '/#products',
-            dropdown: [
-                { name: 'Intelligence-as-a-service', href: '/i-a-a-s' },
-                { name: 'Vision.ai', href: '/i-a-a-s/visionai' },
-                { name: 'OneGodown', href: '/onegodown' },
-                { name: 'Kiran - AI POS (Point of Sale)', href: '/onegodown/kiran-ai-pos' }
-            ]
+            href: '/#products'
         },
 
         {
             name: 'Team',
             href: '/#team'
         },
+        { name: 'Experience our products', href: 'https://iaas.yantrailabs.com/experience', isHighlighted: true },
         { name: 'We are hiring!', href: '/#career' },
         { name: 'Contact', href: '/#contact' },
         { name: 'Life at YantrAI', href: '/#life' },
@@ -90,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                     transform: scrolled ? 'scale(0.85)' : 'scale(1)',
                     transformOrigin: 'left center'
                 }}>
-                    <img src="/assets/branding/yantrai_logo_main.png" alt="YantrAI" style={{ height: '64px', width: 'auto', maxWidth: 'none' }} />
+                    <img src="/yantrai-logo-white-background.png" alt="YantrAI" style={{ height: '64px', width: 'auto', maxWidth: 'none' }} />
                 </a>
             </div>
 
@@ -116,20 +118,34 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                         onMouseEnter={() => setHoveredLink(link.name)}
                         onMouseLeave={() => setHoveredLink(null)}
                     >
-                        <a
+                        <motion.a
                             href={link.href}
-                            style={{
-                                padding: '10px 20px',
-                                fontSize: '13px',
-                                fontWeight: 500,
-                                color: isDarkTheme ? '#ffffff' : 'var(--text-primary)',
-                                textDecoration: 'none',
-                                borderRadius: '999px',
-                                position: 'relative',
-                                display: 'block',
-                                transition: 'color 0.3s ease',
-                                zIndex: 1
-                            }}
+                            animate={(link as any).isHighlighted ? {
+                                boxShadow: [
+                                    '0 0 15px rgba(0, 113, 227, 0.4)',
+                                    '0 0 25px rgba(0, 113, 227, 0.7)',
+                                    '0 0 15px rgba(0, 113, 227, 0.4)'
+                                ]
+                            } : {}}
+                                transition={link.isHighlighted ? {
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                } : {}}
+                                style={{
+                                    padding: '10px 20px',
+                                    fontSize: '13px',
+                                    fontWeight: link.isHighlighted ? 700 : 500,
+                                    color: link.isHighlighted ? 'var(--yantrai-blue)' : (isDarkTheme ? '#ffffff' : 'var(--text-primary)'),
+                                    textDecoration: 'none',
+                                    borderRadius: '999px',
+                                    position: 'relative',
+                                    display: 'block',
+                                    transition: 'all 0.3s ease',
+                                    border: link.isHighlighted ? '1px solid var(--yantrai-blue)' : 'none',
+                                    background: link.isHighlighted ? 'rgba(0, 113, 227, 0.1)' : 'transparent',
+                                    zIndex: 1
+                                }}
                         >
                             {hoveredLink === link.name && (
                                 <motion.div
@@ -145,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                                 />
                             )}
                             {link.name}
-                        </a>
+                        </motion.a>
 
                         <AnimatePresence>
                             {hoveredLink === link.name && link.dropdown && (
@@ -267,21 +283,35 @@ const Navbar: React.FC<NavbarProps> = ({ theme = 'light' }) => {
                         }}
                     >
                         {b2bLinks.map((link) => (
-                            <a
+                            <motion.a
                                 key={link.name}
                                 href={link.href}
+                                animate={(link as any).isHighlighted ? {
+                                    boxShadow: [
+                                        '0 0 5px rgba(0, 113, 227, 0.2)',
+                                        '0 0 15px rgba(0, 113, 227, 0.4)',
+                                        '0 0 5px rgba(0, 113, 227, 0.2)'
+                                    ]
+                                } : {}}
+                                transition={link.isHighlighted ? {
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                } : {}}
                                 style={{
                                     padding: '12px',
                                     fontSize: '17px',
-                                    color: isDarkTheme ? '#ffffff' : 'var(--apple-black)',
-                                    fontWeight: 500,
+                                    color: link.isHighlighted ? 'var(--yantrai-blue)' : (isDarkTheme ? '#ffffff' : 'var(--apple-black)'),
+                                    fontWeight: link.isHighlighted ? 700 : 500,
                                     textDecoration: 'none',
-                                    borderBottom: '1px solid #f5f5f7'
+                                    borderBottom: '1px solid #f5f5f7',
+                                    background: link.isHighlighted ? 'rgba(0, 113, 227, 0.05)' : 'transparent',
+                                    borderRadius: '8px'
                                 }}
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 {link.name}
-                            </a>
+                            </motion.a>
                         ))}
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '12px' }}>
                             <a href="/login" style={{ textAlign: 'center', padding: '12px', color: isDarkTheme ? '#ffffff' : 'var(--apple-black)', fontWeight: 500 }}>Login</a>

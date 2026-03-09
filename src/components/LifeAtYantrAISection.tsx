@@ -106,7 +106,7 @@ const LifeAtYantrAISection: React.FC = () => {
     };
 
     return (
-        <section id="life" style={{ background: "#ffffff", color: "#1d1d1f", overflowX: "hidden" }}>
+        <section id="life" style={{ background: "#000000", color: "#ffffff", overflowX: "hidden" }}>
             <AnimatePresence>
                 {lightboxOpen && (
                     <motion.div
@@ -183,15 +183,15 @@ const LifeAtYantrAISection: React.FC = () => {
             <div style={{ padding: "100px 0" }}>
                 <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
                     <div style={{ marginBottom: "80px", textAlign: "center" }}>
-                        <h2 style={{ fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 700, letterSpacing: "-0.04em", margin: "0 0 1rem 0", lineHeight: 1.1 }}>Life at <span style={{ color: "#0071e3" }}>YantrAI.</span></h2>
-                        <p style={{ color: "#86868b", fontSize: "20px", maxWidth: "800px", margin: "0 auto" }}>Where engineering excellence meets visionary impact. Capturing the energy, collaboration, and spirit of our team.</p>
+                        <h2 style={{ fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 700, letterSpacing: "-0.04em", margin: "0 0 1rem 0", lineHeight: 1.1, color: "#fff" }}>Life at <span style={{ color: "var(--yantrai-blue)" }}>YantrAI.</span></h2>
+                        <p style={{ color: "var(--text-secondary)", fontSize: "20px", maxWidth: "800px", margin: "0 auto" }}>Where engineering excellence meets visionary impact. Capturing the energy, collaboration, and spirit of our team.</p>
                     </div>
 
                     {/* Impact Moments Section */}
                     <div style={{ marginBottom: "100px" }}>
                         <div style={{ marginBottom: "40px" }}>
-                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#1d1d1f" }}>Impact Moments</h3>
-                            <p style={{ color: "#86868b", fontSize: "18px" }}>Beyond code. Making a difference at the highest levels.</p>
+                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#fff" }}>Impact Moments</h3>
+                            <p style={{ color: "var(--text-secondary)", fontSize: "18px" }}>Beyond code. Making a difference at the highest levels.</p>
                         </div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "40px" }}>
                             {milestones.map((item, i) => (
@@ -208,7 +208,7 @@ const LifeAtYantrAISection: React.FC = () => {
                                         borderRadius: "32px",
                                         overflow: "hidden",
                                         height: i === 0 ? "600px" : "450px",
-                                        border: "1px solid rgba(0,0,0,0.05)",
+                                        border: "1px solid rgba(255,255,255,0.1)",
                                         boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
                                         cursor: "pointer"
                                     }}
@@ -228,8 +228,8 @@ const LifeAtYantrAISection: React.FC = () => {
                     {/* Life in Action Section */}
                     <div style={{ marginBottom: "100px" }}>
                         <div style={{ marginBottom: "40px" }}>
-                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#1d1d1f" }}>Life in Action</h3>
-                            <p style={{ color: "#86868b", fontSize: "18px" }}>The spirit of our team in motion.</p>
+                            <h3 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "8px", color: "#fff" }}>Life in Action</h3>
+                            <p style={{ color: "var(--text-secondary)", fontSize: "18px" }}>The spirit of our team in motion.</p>
                         </div>
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: "24px", gridAutoRows: "300px" }}>
                             {lifeImages.map((src, i) => (
@@ -261,10 +261,10 @@ const LifeAtYantrAISection: React.FC = () => {
                         gap: "40px"
                     }}>
                         {values.map((v, i) => (
-                            <div key={i} style={{ padding: "40px", borderRadius: "24px", background: "#f5f5f7", border: "1px solid rgba(0,0,0,0.05)", boxShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
+                            <div key={i} style={{ padding: "40px", borderRadius: "24px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: 'blur(20px)' }}>
                                 <div style={{ marginBottom: "24px" }}>{v.icon}</div>
-                                <h3 style={{ fontSize: "24px", fontWeight: 600, marginBottom: "16px", color: "#1d1d1f" }}>{v.title}</h3>
-                                <p style={{ color: "#424245", lineHeight: 1.6, margin: 0 }}>{v.desc}</p>
+                                <h3 style={{ fontSize: "24px", fontWeight: 600, marginBottom: "16px", color: "#fff" }}>{v.title}</h3>
+                                <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>{v.desc}</p>
                             </div>
                         ))}
                     </div>

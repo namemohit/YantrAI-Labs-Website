@@ -35,11 +35,11 @@ const YCSPage: React.FC = () => {
     ];
 
     return (
-        <div style={{ background: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)', fontFamily: 'var(--font-main)' }}>
-            <Navbar theme="light" />
+        <div style={{ background: '#000', minHeight: '100vh', color: '#fff', fontFamily: 'var(--font-main)' }}>
+            <Navbar theme="dark" />
 
             {/* Hero Section */}
-            <section style={{ padding: '160px 0 80px 0', textAlign: 'center', background: 'var(--bg-secondary)' }}>
+            <section style={{ padding: '160px 0 80px 0', textAlign: 'center', background: '#0a0a0a' }}>
                 <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 20px' }}>
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -153,7 +153,7 @@ const YCSPage: React.FC = () => {
                 </div>
             </section>
 
-            <footer style={{ background: 'var(--bg-secondary)', padding: '60px 0', borderTop: '1px solid var(--border-color)' }}>
+            <footer style={{ background: '#0a0a0a', padding: '60px 0', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center', color: 'var(--text-secondary)', fontSize: '14px' }}>
                     <p>© 2026 YantrAI Labs Pvt Ltd. All rights reserved.</p>
                 </div>
