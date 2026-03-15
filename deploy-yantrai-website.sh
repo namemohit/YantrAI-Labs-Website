@@ -45,17 +45,9 @@ echo -e "${YELLOW}🔐 Configuring Docker authentication...${NC}"
 gcloud auth configure-docker $REGION-docker.pkg.dev
 
 echo -e "${YELLOW}🏗️  Building Docker image...${NC}"
-docker buildx inspect webbuilder >/dev/null 2>&1 || docker buildx create --use --name webbuilder
-docker buildx use webbuilder
 
-echo -e "${YELLOW}📦 Building and pushing image to Artifact Registry...${NC}"
-docker buildx build \
-    --platform linux/amd64 \
-    -f Dockerfile \
-    -t $FULL_IMAGE_NAME \
-    --push \
-    --provenance=false \
-    .
+echo -e "${YELLOW}📦 Building and pushing image to Artifact Registry via gcloud builds...${NC}"
+gcloud builds submit --tag $FULL_IMAGE_NAME .
 
 echo -e "${GREEN}✅ Image built and pushed successfully${NC}"
 
