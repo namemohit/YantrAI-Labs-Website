@@ -9,9 +9,9 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 # Configuration (edit as needed)
-PROJECT_ID="ogretailos-474407"
+PROJECT_ID="yantraivisionos"
 REGION="us-central1"
-REPO="og-repo"
+REPO="yantraivisionos"
 SERVICE_NAME="yantrai-labs-website"
 IMAGE_NAME="yantrai-labs-website"
 IMAGE_TAG="latest"

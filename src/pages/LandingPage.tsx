@@ -5,6 +5,7 @@ import { MapPin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import LifeAtYantrAISection from '../components/LifeAtYantrAISection';
 import BentoCard from '../components/BentoCard';
+
 import ExpandableJobItem from '../components/ExpandableJobItem';
 import AccessPass from '../components/AccessPass';
 import Footer from '../components/Footer';
