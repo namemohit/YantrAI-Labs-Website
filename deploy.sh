@@ -46,8 +46,11 @@ gcloud auth configure-docker $REGION-docker.pkg.dev
 
 echo -e "${YELLOW}🏗️  Building Docker image...${NC}"
 
-echo -e "${YELLOW}📦 Building and pushing image to Artifact Registry via gcloud builds...${NC}"
-gcloud builds submit --tag $FULL_IMAGE_NAME .
+echo -e "${YELLOW}📦 Building image locally...${NC}"
+docker build --platform linux/amd64 -t $FULL_IMAGE_NAME .
+
+echo -e "${YELLOW}⬆️  Pushing image to Artifact Registry...${NC}"
+docker push $FULL_IMAGE_NAME
 
 echo -e "${GREEN}✅ Image built and pushed successfully${NC}"
 
