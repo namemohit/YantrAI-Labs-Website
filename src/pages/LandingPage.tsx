@@ -147,7 +147,13 @@ const LandingPage: React.FC = () => {
                         <BentoCard delay={0.1} style={{ gridColumn: 'span 6', padding: '40px', minHeight: '300px' }}>
                             <div style={{ zIndex: 10, position: 'relative' }}>
                                 <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>SUPPLY CHAIN</div>
-                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#fff' }}>One Godown</h3>
+                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px' }}>
+                                    <a href="/onegodown" style={{ color: '#fff', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--yantrai-blue)')}
+                                        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}>
+                                        One Godown →
+                                    </a>
+                                </h3>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>AI-driven warehouse and inventory management platform.</p>
                             </div>
                         </BentoCard>
@@ -155,7 +161,13 @@ const LandingPage: React.FC = () => {
                         <BentoCard delay={0.2} style={{ gridColumn: 'span 6', padding: '40px', minHeight: '300px' }}>
                             <div style={{ zIndex: 10, position: 'relative' }}>
                                 <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>RETAIL</div>
-                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px', color: '#fff' }}>Kiran AI POS</h3>
+                                <h3 style={{ fontSize: '32px', fontWeight: 600, marginBottom: '16px' }}>
+                                    <a href="/onegodown/kiran-ai-pos" style={{ color: '#fff', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--yantrai-blue)')}
+                                        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}>
+                                        Kiran AI POS →
+                                    </a>
+                                </h3>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Intelligent Point of Sale system with built-in analytics.</p>
                             </div>
                         </BentoCard>
@@ -163,7 +175,13 @@ const LandingPage: React.FC = () => {
                         <BentoCard delay={0.3} style={{ gridColumn: 'span 12', padding: '60px', minHeight: '400px', background: 'linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 100%)' }}>
                              <div style={{ zIndex: 10, position: 'relative', maxWidth: '600px' }}>
                                 <div style={{ color: 'var(--yantrai-blue)', fontSize: '14px', fontWeight: 600, marginBottom: '8px' }}>ENTERPRISE</div>
-                                <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '24px', color: '#fff', lineHeight: 1.1 }}>Solvr. Apps delivered in 10 mins.</h3>
+                                <h3 style={{ fontSize: '48px', fontWeight: 700, marginBottom: '24px', color: '#fff', lineHeight: 1.1 }}>
+                                    <a href="/enterprise" style={{ color: '#fff', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--yantrai-blue)')}
+                                        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}>
+                                        Solvr. Apps delivered in 10 mins. →
+                                    </a>
+                                </h3>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '20px', lineHeight: 1.6, marginBottom: '24px' }}>Generate production-ready React Native and Next.js applications instantly using your design specs.</p>
                             </div>
                         </BentoCard>
